@@ -1,3 +1,6 @@
+// ========================<INITIAL CONFIGURATION FOR THE FILES>==============================================
+// =========<Can be used as a spring board point for any new router created>============================
+
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
