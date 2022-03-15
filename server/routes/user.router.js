@@ -1,5 +1,4 @@
 // ===============<WHERE THE AUTHENTICATION PROCESS OCCURS FOR A USER>===================
-// ===============<>===================
 
 const express = require('express');
 const {rejectUnauthenticated, } = require('../modules/authentication-middleware');

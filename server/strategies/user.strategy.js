@@ -1,3 +1,7 @@
+// ===============<THIS TAKES CARE OF THE PASSPORT CONFIGURATION>=============================================
+// =====<Will handle authentication of user and selects the specific user from the correct table>===========
+// ---------< * Only needs to be changed if you call something other than 'username' * >-----------
+
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const encryptLib = require('../modules/encryption');
