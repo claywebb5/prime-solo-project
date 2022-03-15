@@ -6,64 +6,47 @@ import './LandingPage.css';
 import RegisterForm from '../RegisterForm/RegisterForm';
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Welcome');
+
+  //=================<START STATE VARIABLES>====================================================================
+      // Welcome Statement
+  const [heading, setHeading] = useState('Welcome to Hey Bill W.');
+      // Project Overview
+  const [firstParagraph, setFirstParagraph] = useState(`During the Covid-19 lockdown in March of 2020, everyone was affected to some extent from the stay-at-home order, especially the A.A. community. Which relies on mutual support from members of the community in order to follow the program. That's why I believe in this day and age, a virtual recovery experience is something that needs more attention. With my app, Hey Bill W, in honor of the founder of Alcoholics Anonymous. Those who are in A.A. will log in, and be greeted with a daily prayer and reminders of what they have to do that day. Be able to follow and update the choices they are making during their 12 Steps. Have access to The Big Book, and an interactive map of their location, as well as the location of other users when given their unique key. There will also be a page regarding the history of A.A. and Bill W, information about the program, and contact information for local treatment centers.`)
+  //------<END STATE VARIABLES>---------------------------------------------------------------------------
+
+  // Invoke useHistory
   const history = useHistory();
 
+  //=================<CLICK LISTENER>===========================================
+      // When the "Login" button is clicked, brings the user to '/login' view
   const onLogin = (event) => {
     history.push('/login');
-  };
+  }; //------<END CLICK LISTENER>-------------------------------
 
+  //=================<START RETURN>====================================================================
   return (
     <div className="container">
       <h2>{heading}</h2>
 
       <div className="grid">
         <div className="grid-col grid-col_8">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. Etiam et turpis sit amet risus mollis
-            interdum. Suspendisse et justo vitae metus bibendum fringilla sed
-            sed justo. Aliquam sollicitudin dapibus lectus, vitae consequat odio
-            elementum eget. Praesent efficitur eros vitae nunc interdum, eu
-            interdum justo facilisis. Sed pulvinar nulla ac dignissim efficitur.
-            Quisque eget eros metus. Vestibulum bibendum fringilla nibh a
-            luctus. Duis a sapien metus.
-          </p>
+          
+          <p>{firstParagraph}</p>
 
-          <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
-          </p>
-
-          <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. Aliquam vitae felis libero. In
-            vehicula sapien at semper ultrices. Vivamus sed feugiat libero. Sed
-            sagittis neque id diam euismod, ut egestas felis ultricies. Nullam
-            non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
-            amet nisi.
-          </p>
         </div>
         <div className="grid-col grid-col_4">
           <RegisterForm />
 
           <center>
             <h4>Already a Member?</h4>
-            <button className="btn btn_sizeSm" onClick={onLogin}>
-              Login
-            </button>
-          </center>
-        </div>
-      </div>
-    </div>
-  );
-}
+            <button className="btn btn_sizeSm" onClick={onLogin}>Login</button>
+          </center> {/* ---<END CENTER>---------------------------------------- */}
+        </div> {/* ---<END grid-col_4 DIV>---------------------------------------- */}
+      </div> {/* ---<END grid-col_8 DIV>--------------------------------------------- */}
+    </div> //---<END container DIV>---------------------------------------------------- */}
+
+
+  ); //---<END RETURN>--------------------------------------------------------------------------------------- */}
+} //---<END LandingPage FUNCTION>------------------------------------------------------------------------------------ */}
 
 export default LandingPage;
