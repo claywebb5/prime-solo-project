@@ -1,3 +1,4 @@
+// ===================<THIS FILE IS WHERE bcrypt OCCURS TO ENCRYPT PASSWORDS>=======================
 // No changes should be required in this file
 
 const bcrypt = require('bcryptjs');

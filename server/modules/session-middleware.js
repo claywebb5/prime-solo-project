@@ -1,3 +1,5 @@
+// ===================<THIS FILE IS WHERE OUR SESSIONS ARE BEING SET UP>=======================
+// =======<When we have an authenticated user, they will be stored in a session to be maintain the system>=====
 // No changes should be required in this file
 
 const cookieSession = require('cookie-session');

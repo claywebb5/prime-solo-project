@@ -1,3 +1,4 @@
+// =============<THE server.js FILE IS WHERE EVERYTHING IS CONFIGURED AND SET UP>============================
 const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
@@ -7,27 +8,30 @@ const app = express();
 const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
 
-// Route includes
+// =====<ROUTE INCLUDES>=======================================================================================
 const userRouter = require('./routes/user.router');
 
-// Body parser middleware
+// =====<BODY PARSER MIDDLEWARE>===============================================================================
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Passport Session Configuration //
+// =====<PASSPORT SESSION CONFIGURATION>========================================================================
+  // This is setting up our sessions, the actual sessions middleware is in the modules folder
 app.use(sessionMiddleware);
 
-// start up passport sessions
+// =====<START UP PASSPORT SESSIONS>============================================================================
 app.use(passport.initialize());
 app.use(passport.session());
 
-/* Routes */
+// =====< * ROUTES * >==========================================================================================
+  // This route handles user authentication (login, logout, and registration)
 app.use('/api/user', userRouter);
 
-// Serve static files
+// =====<SERVE STATIC FILES>====================================================================================
+  // For production build
 app.use(express.static('build'));
 
-// App Set //
+// =====<APP SET>===============================================================================================
 const PORT = process.env.PORT || 5000;
 
 /** Listen * */
