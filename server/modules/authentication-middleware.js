@@ -1,11 +1,13 @@
+// ======<VALIDATES IF A USER IS AUTHENTICATED BEFORE SURFACING DATA FROM A SPECIFIC ENDPOINT>==========
+
 const rejectUnauthenticated = (req, res, next) => {
-  // check if logged in
+  // Checking to see if 'req.isAuthenticated' is true or false
   if (req.isAuthenticated()) {
-    // They were authenticated! User may do the next thing
-    // Note! They may not be Authorized to do all things
-    next();
+    // If true: user is authenticated and may proceed
+        // Note! They may not be Authorized to do all things
+    next(); // * In user route *
   } else {
-    // failure best handled on the server. do redirect here.
+    // If false: user does not have access, will receive a 403 error message
     res.sendStatus(403);
   }
 };
