@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // =====<PASSPORT SESSION CONFIGURATION>========================================================================
+  // This is setting up our sessions, the actual sessions middleware is in the modules folder
 app.use(sessionMiddleware);
 
 // =====<START UP PASSPORT SESSIONS>============================================================================
@@ -23,9 +24,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // =====< * ROUTES * >==========================================================================================
+  // This route handles user authentication (login, logout, and registration)
 app.use('/api/user', userRouter);
 
 // =====<SERVE STATIC FILES>====================================================================================
+  // For production build
 app.use(express.static('build'));
 
 // =====<APP SET>===============================================================================================

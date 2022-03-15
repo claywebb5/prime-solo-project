@@ -1,9 +1,4 @@
-/* the only line you likely need to change is
-
- database: 'prime_app',
-
- change `prime_app` to the name of your database, and you should be all set!
-*/
+// ================<THE pool.js FILE IS WHERE OUR DATABASE SET UP IS>==========================
 
 const pg = require('pg');
 const url = require('url');
