@@ -144,6 +144,7 @@ class MapView extends Component {
 
     // =========================<RENDER>===========================================
     render() {
+
         // -----<Creates a list of Marker's for each online user>----------
         let locationMarkers = Object.keys(this.state.locations).map((username, id) => {
             // -----<RETURN THE USERS LOCATION>----------
@@ -172,6 +173,14 @@ class MapView extends Component {
                 </GoogleMap>
             </div>
         ) // END RETURN>-----------------------------------------------
+
+        // -------------<TOAST NOTIFICATIONS OF OTHER USERS>---------------------------
+        // ------< * Needs to be fixed * >---------------
+        // return (
+        //     <div>
+        //         <ToastContainer />
+        //     </div>
+        // );
 
     } // ===========<END RENDER>================================================
 } // =======================<END CLASS COMPONENT>================================================
