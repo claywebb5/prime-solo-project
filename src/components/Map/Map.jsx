@@ -131,6 +131,18 @@ class MapView extends Component {
     }
   } //----<END getLocation METHOD>---------
 
+  //----<NOTIFY METHOD>----------------------------------------------------
+  notify = () => toast(`Users online : ${Object.keys(this.state.users_online).length}`, {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    type: 'info'
+
+  }); //---------------------------------------------
+
     return(
         // <div className="container">
         //   <p>This is the map view</p>
