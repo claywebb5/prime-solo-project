@@ -78,12 +78,12 @@ function App() {
           </ProtectedRoute>
 
           {/* ========<MAP>=================== */}
-          {/* <ProtectedRoute
+          <ProtectedRoute
             exact
-            path="/"
+            path="/map"
           >
-            < />
-          </ProtectedRoute> */}
+            <MapView />
+          </ProtectedRoute>
 
           {/* ========<PROFILE>=================== */}
           <ProtectedRoute
