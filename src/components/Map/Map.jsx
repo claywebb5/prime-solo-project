@@ -55,7 +55,7 @@ class MapView extends Component {
     // Pusher object binding the front & back end listening for:
     componentDidMount() {
         let pusher = new Pusher("89062ebb8b009df054e1", {
-            authEndpoint: "http://localhost:3128/pusher/auth",
+            authEndpoint: "http://localhost:5000/pusher/auth",
             cluster: "us2"
         })
         // Subscribe to presence channel
