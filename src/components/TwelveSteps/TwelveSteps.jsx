@@ -2,12 +2,12 @@
 import React from 'react';
 
 
-function InfoPage() {
+function TwelveSteps() {
   return (
     <div className="container">
-      <p>Info Page</p>
+      <p>Interactive Twelve Step Program</p>
     </div>
   );
 }
 
-export default InfoPage;
+export default TwelveSteps;

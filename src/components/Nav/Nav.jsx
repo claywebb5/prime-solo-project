@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 
@@ -9,10 +8,15 @@ function Nav() {
 
   return (
     <div className="nav">
+
+      {/* <ON LOGIN / REGISTER VIEW - WHEN CLICKED BRINGS USER TO LANDING PAGE> */}
       <Link to="/home">
         <h2 className="nav-title">Hey Bill W.</h2>
       </Link>
+      {/* ---------------------------------------------------------- */}
+
       <div>
+
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
@@ -24,22 +28,41 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
+            {/* <WELCOME VIEW> */}
+            <Link className="navLink" to="/welcome">
               Home
             </Link>
-
-            <Link className="navLink" to="/info">
-              Info Page
+            
+            {/* <THIS WILL BE THE INTERACTIVE 12 STEP PROGRAM> */}
+            {/* <USED TO BE THE LINK FOR INFO> */}
+            <Link className="navLink" to="/steps">
+              12 Steps
             </Link>
 
-            <LogOutButton className="navLink" />
+            {/* <THIS WILL BE THE BIG BOOK LITERATURE> */}
+            <Link className="navLink" to="/literature">
+              Literature
+            </Link>
+
+            {/* <THIS WILL BE THE MAP> */}
+            <Link className="navLink" to="/map">
+              Map
+            </Link>
+
+            {/* <USER PAGE & LOG OUT BUTTON COMPONENTS> */}
+            <Link className="navLink" to="/user">
+              Profile
+            </Link>
+
           </>
         )}
-
+        {/* <THIS WILL BE THE ABOUT PAGE COMPONENT> */}
         <Link className="navLink" to="/about">
           About
         </Link>
+
       </div>
+
     </div>
   );
 }
