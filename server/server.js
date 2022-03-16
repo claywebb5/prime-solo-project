@@ -2,11 +2,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
-
+const Pusher = require('pusher');
 const app = express();
 
 const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
+
+// =====<INITIALIZE PUSHER>=======================================================================================
+let pusher = new Pusher({
+  appId: "1361275",
+  key: "89062ebb8b009df054e1",
+  secret: "4e4b7a670ff0bdb4a6a8",
+  cluster: "us2",
+  encrypted: true
+});
 
 // =====<ROUTE INCLUDES>=======================================================================================
 const userRouter = require('./routes/user.router');
