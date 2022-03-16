@@ -33,12 +33,30 @@ const Marker = ({ title }) => (
     </div>
   );
 
+// =================<CREATE A CLASS COMPONENT>=============================
+class MapView extends Component {
 
-function MapView() {
+ //----<ADD STATES TO OUR COMPONENT TO TRACK>----------------------------------
+ constructor(props) {
+    super(props)
+    this.state = {
+      // The map center
+      center: { lat: 5.6219868, lng: -0.23223 },
+      // Location for other online users
+      locations: {},
+      // Users currently online
+      users_online: {},
+      // Username of current user
+      current_user: ''
+    }
+  } //----<END STATE>-------------------------
+
+  
+  
   return (
-    <div className="container">
-      <p>This is the map view</p>
-    </div>
+    // <div className="container">
+    //   <p>This is the map view</p>
+    // </div>
   );
 }
 
