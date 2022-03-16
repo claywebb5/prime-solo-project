@@ -112,10 +112,10 @@ function TwelveSteps() {
                 </div>
             </Box>
 
-                {/* =============< STEP>================ */}
+                {/* =============<SEVENTH STEP>================ */}
+            <Box component="form">
                 <div>
-                    <h3> Step Label</h3>
-
+                    <h3>Seventh Step</h3>
                     <p>*Actual step goes here*</p>
 
                     <TextField
@@ -123,18 +123,15 @@ function TwelveSteps() {
                         // value={textValue}
                         label={"What you've done"} //optional
                     />
-
-                    {/* <Button onClick={handleSubmit}>Submit</Button>
-                    <Button onClick={handleReset}>Reset</Button> */}
                     <Button >Submit</Button>
                     <Button >Reset</Button>
                 </div>
-                </Box>
+            </Box>
 
-                {/* =============< STEP>================ */}
+                {/* =============<EIGHTH STEP>================ */}
+            <Box component="form">
                 <div>
-                    <h3> Step Label</h3>
-
+                    <h3>Eighth Step</h3>
                     <p>*Actual step goes here*</p>
 
                     <TextField
@@ -142,18 +139,15 @@ function TwelveSteps() {
                         // value={textValue}
                         label={"What you've done"} //optional
                     />
-
-                    {/* <Button onClick={handleSubmit}>Submit</Button>
-                    <Button onClick={handleReset}>Reset</Button> */}
                     <Button >Submit</Button>
                     <Button >Reset</Button>
                 </div>
-                </Box>
+            </Box>
 
-                {/* =============< STEP>================ */}
+                {/* =============<NINTH STEP>================ */}
+            <Box component="form">
                 <div>
-                    <h3> Step Label</h3>
-
+                    <h3>Ninth Step</h3>
                     <p>*Actual step goes here*</p>
 
                     <TextField
@@ -161,18 +155,15 @@ function TwelveSteps() {
                         // value={textValue}
                         label={"What you've done"} //optional
                     />
-
-                    {/* <Button onClick={handleSubmit}>Submit</Button>
-                    <Button onClick={handleReset}>Reset</Button> */}
                     <Button >Submit</Button>
                     <Button >Reset</Button>
                 </div>
-                </Box>
+            </Box>
 
-                {/* =============< STEP>================ */}
+                {/* =============<TENTH STEP>================ */}
+            <Box component="form">
                 <div>
-                    <h3> Step Label</h3>
-
+                    <h3>Tenth Step</h3>
                     <p>*Actual step goes here*</p>
 
                     <TextField
@@ -180,18 +171,15 @@ function TwelveSteps() {
                         // value={textValue}
                         label={"What you've done"} //optional
                     />
-
-                    {/* <Button onClick={handleSubmit}>Submit</Button>
-                    <Button onClick={handleReset}>Reset</Button> */}
                     <Button >Submit</Button>
                     <Button >Reset</Button>
                 </div>
-                </Box>
+            </Box>
 
-                {/* =============< STEP>================ */}
+                {/* =============<ELEVENTH STEP>================ */}
+            <Box component="form">
                 <div>
-                    <h3> Step Label</h3>
-
+                    <h3>Eleventh Step</h3>
                     <p>*Actual step goes here*</p>
 
                     <TextField
@@ -199,18 +187,15 @@ function TwelveSteps() {
                         // value={textValue}
                         label={"What you've done"} //optional
                     />
-
-                    {/* <Button onClick={handleSubmit}>Submit</Button>
-                    <Button onClick={handleReset}>Reset</Button> */}
                     <Button >Submit</Button>
                     <Button >Reset</Button>
                 </div>
-                </Box>
+            </Box>
 
-                {/* =============< STEP>================ */}
+                {/* =============<TWELFTH STEP>================ */}
+            <Box component="form">
                 <div>
-                    <h3> Step Label</h3>
-
+                    <h3>Twelfth Step</h3>
                     <p>*Actual step goes here*</p>
 
                     <TextField
@@ -218,9 +203,6 @@ function TwelveSteps() {
                         // value={textValue}
                         label={"What you've done"} //optional
                     />
-
-                    {/* <Button onClick={handleSubmit}>Submit</Button>
-                    <Button onClick={handleReset}>Reset</Button> */}
                     <Button >Submit</Button>
                     <Button >Reset</Button>
                 </div>
