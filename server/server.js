@@ -17,6 +17,17 @@ let pusher = new Pusher({
   encrypted: true
 });
 
+// =====<ALLOW CORS>=======================================================================================
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
+
+
 // =====<ROUTE INCLUDES>=======================================================================================
 const userRouter = require('./routes/user.router');
 
