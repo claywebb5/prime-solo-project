@@ -1,13 +1,13 @@
-// ========================<>====================
+// ========================<THIS VIEW WILL DISPLAY THE LITERATURE>====================
 import React from 'react';
 
 
-function () {
+function Literature() {
   return (
     <div className="container">
-      <p></p>
+      <p>This view will display the literature</p>
     </div>
   );
 }
 
-export default ;
+export default Literature;
