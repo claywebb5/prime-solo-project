@@ -1,3 +1,4 @@
+// ========================<THIS IS THE USER PROFILE VIEW>====================
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
