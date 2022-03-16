@@ -20,7 +20,6 @@ function Welcome() {
                 <h2>Welcome, {user.username}!</h2>
                 <p>Your ID is: {user.id}</p>
             </div>
-            
 
             {/* ============<START DAILY PRAYER CARD>============= */}
             <Card>
@@ -78,5 +77,4 @@ function Welcome() {
     );
 }
 
-// this allows us to use <App /> in index.js
 export default Welcome;
