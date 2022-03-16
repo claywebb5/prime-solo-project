@@ -7,6 +7,11 @@ function LoginPage() {
 
   return (
     <div>
+      <div>
+        <h1>Login info:</h1>
+        <li>Username: clay</li>
+        <li>Password: 1234</li>
+      </div>
       <LoginForm />
 
       <center>
