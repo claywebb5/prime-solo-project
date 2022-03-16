@@ -44,6 +44,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // =====< * ROUTES * >==========================================================================================
+  // Handles requests to authenticate users joining the presence channel
+app.post('/pusher/auth', (req, res) => {
+  let socketId = req.body.socket_id;
+  let channel = req.body.channel_name;
+  random_string = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+  let presenceData = {
+      user_id: random_string,
+      user_info: {
+          username: '@' + random_string,
+      }
+  };
+  let auth = pusher.authenticate(socketId, channel, presenceData);
+  res.send(auth);
+});
+
+
   // This route handles user authentication (login, logout, and registration)
 app.use('/api/user', userRouter);
 
