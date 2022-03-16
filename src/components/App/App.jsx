@@ -5,10 +5,10 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
-
 import Welcome from '../Welcome/Welcome';
 import UserPage from '../UserPage/UserPage';
-
+import Literature from '../Literature/Literature';
+import MapView from '../Map/Map';
 import TwelveSteps from '../TwelveSteps/TwelveSteps';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -70,12 +70,12 @@ function App() {
           </ProtectedRoute>
 
           {/* ========<LITERATURE>=================== */}
-          {/* <ProtectedRoute
+          <ProtectedRoute
             exact
-            path="/"
+            path="/literature"
           >
-            < />
-          </ProtectedRoute> */}
+            <Literature />
+          </ProtectedRoute>
 
           {/* ========<MAP>=================== */}
           {/* <ProtectedRoute
@@ -93,7 +93,7 @@ function App() {
             <UserPage />
           </ProtectedRoute>
 
-          {/* ========<>=================== */}
+          {/* ========<IF USER IS ALREADY LOGGED IN>=================== */}
           <Route
             exact
             path="/login"
@@ -108,7 +108,7 @@ function App() {
             }
           </Route>
 
-          {/* ========<>=================== */}
+          {/* ========<IF USER IS ALREADY LOGGED IN>=================== */}
           <Route
             exact
             path="/registration"
@@ -123,7 +123,7 @@ function App() {
             }
           </Route>
 
-          {/* ========<>=================== */}
+          {/* ========<IF USER IS ALREADY LOGGED IN>=================== */}
           <Route
             exact
             path="/home"
