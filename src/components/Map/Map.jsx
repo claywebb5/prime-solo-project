@@ -13,16 +13,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 //---<STYLING>------------------------
 const mapStyles = {
-    width: '100%',
-    height: '100%'
+    width: '50%',
+    height: '50%'
 }
 const markerStyle = {
     height: '50px',
     width: '50px',
-    marginTop: '-50px'
+    marginTop: '50px'
 }
 const imgStyle = {
-    height: '100%'
+    height: '50%'
 }
 
 //---<LOCATION OF USER>------------------------
@@ -158,8 +158,21 @@ class MapView extends Component {
             ); // ------<END USER LOCATION RETURN>-------
         }); // ----------------<END locationMarkers>--------------------
 
+        // -----<RETURN THE ACTUAL GOOGLE MAP API>----------
+        return (
+            <div >
+                <GoogleMap
+                    style={mapStyles}
+                    // Enter in your API key
+                    bootstrapURLKeys={{ key: 'AIzaSyCm4Rm_ufmh4QQpWaohfbJLXSsbPTwDurQ' }}
+                    center={this.state.center}
+                    zoom={14}
+                >
+                    {locationMarkers}
+                </GoogleMap>
+            </div>
+        ) // END RETURN>-----------------------------------------------
 
-        
     } // ===========<END RENDER>================================================
 } // =======================<END CLASS COMPONENT>================================================
 
