@@ -29,9 +29,7 @@ function App() {
   return (
 
     <Router>
-
       <div>
-
         <Nav />
 
         <Switch>
@@ -142,6 +140,7 @@ function App() {
           <Route>
             <h1>404</h1>
           </Route>
+          
         </Switch>
         <Footer />
       </div>
