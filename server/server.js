@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const Pusher = require('pusher');
 const app = express();
-
 const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
 
@@ -27,7 +26,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
 // =====<ROUTE INCLUDES>=======================================================================================
 const userRouter = require('./routes/user.router');
 
@@ -44,7 +42,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // =====< * ROUTES * >==========================================================================================
-  // Handles requests to authenticate users joining the presence channel
+// -----<Handles requests to authenticate users joining the presence channel>-------------------
 app.post('/pusher/auth', (req, res) => {
   let socketId = req.body.socket_id;
   let channel = req.body.channel_name;
@@ -59,7 +57,7 @@ app.post('/pusher/auth', (req, res) => {
   res.send(auth);
 });
 
-  // Handles requests to trigger an event when a user updates their location
+// -----<Handles requests to trigger an event when a user updates their location>-------------------
 app.post('/update-location', (req, res) => {
   // trigger a new post event via pusher
   pusher.trigger('presence-channel', 'location-update', {
@@ -69,8 +67,7 @@ app.post('/update-location', (req, res) => {
   res.json({ 'status': 200 });
 });
 
-
-  // This route handles user authentication (login, logout, and registration)
+// -----<This route handles user authentication (login, logout, and registration)>--------------------------
 app.use('/api/user', userRouter);
 
 // =====<SERVE STATIC FILES>====================================================================================
@@ -84,3 +81,9 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
+
+// ====< *** APP SET FROM MAP API *** >==================
+// let port = 3128;
+// app.listen(port);
+// console.log('listening');
+
