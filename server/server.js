@@ -59,6 +59,16 @@ app.post('/pusher/auth', (req, res) => {
   res.send(auth);
 });
 
+  // Handles requests to trigger an event when a user updates their location
+app.post('/update-location', (req, res) => {
+  // trigger a new post event via pusher
+  pusher.trigger('presence-channel', 'location-update', {
+      'username': req.body.username,
+      'location': req.body.location
+  })
+  res.json({ 'status': 200 });
+});
+
 
   // This route handles user authentication (login, logout, and registration)
 app.use('/api/user', userRouter);
