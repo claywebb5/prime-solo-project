@@ -28,14 +28,14 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            {/* <USER PAGE & LOG OUT BUTTON COMPONENTS> */}
-            <Link className="navLink" to="/user">
+            {/* <WELCOME VIEW> */}
+            <Link className="navLink" to="/welcome">
               Home
             </Link>
             
             {/* <THIS WILL BE THE INTERACTIVE 12 STEP PROGRAM> */}
             {/* <USED TO BE THE LINK FOR INFO> */}
-            <Link className="navLink" to="/info">
+            <Link className="navLink" to="/steps">
               12 Steps
             </Link>
 
@@ -47,6 +47,11 @@ function Nav() {
             {/* <THIS WILL BE THE MAP> */}
             <Link className="navLink" to="/map">
               Map
+            </Link>
+
+            {/* <USER PAGE & LOG OUT BUTTON COMPONENTS> */}
+            <Link className="navLink" to="/user">
+              Profile
             </Link>
 
           </>
