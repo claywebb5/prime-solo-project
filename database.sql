@@ -12,8 +12,9 @@ CREATE TABLE "user" (
 -- Prayer table will be one (user) to many (prayer)
 CREATE TABLE "prayer" (
     "id" SERIAL PRIMARY KEY,
-    "prayer" VARCHAR (1000),
-    "interpretation" VARCHAR(1000),
+    "prayer_name" VARCHAR (100),
+    "prayer_text" VARCHAR(1000),
+    "interpretation" VARCHAR(500),
     "user_id" INT REFERENCES "user"
 );
 
