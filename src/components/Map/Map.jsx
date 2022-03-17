@@ -9,12 +9,14 @@ import Pusher from 'pusher-js';
 // To notify users when new users are online or go offline
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './Map.css';
+
 //=======<IMPORTS>=================================
 
 //---<STYLING>------------------------
 const mapStyles = {
     width: '50%',
-    height: '50%'
+    height: '50vh'
 }
 const markerStyle = {
     height: '50px',
@@ -24,6 +26,38 @@ const markerStyle = {
 const imgStyle = {
     height: '50%'
 }
+
+// // Return map bounds based on list of places
+// const getMapBounds = (map, maps, places) => {
+//     const bounds = new maps.LatLngBounds();
+  
+//     places.forEach((place) => {
+//       bounds.extend(new maps.LatLng(
+//         place.geometry.location.lat,
+//         place.geometry.location.lng,
+//       ));
+//     });
+//     return bounds;
+//   };
+
+// // Re-center map when resizing the window
+// const bindResizeListener = (map, maps, bounds) => {
+//     maps.event.addDomListenerOnce(map, 'idle', () => {
+//       maps.event.addDomListener(window, 'resize', () => {
+//         map.fitBounds(bounds);
+//       });
+//     });
+//   };
+
+//   // Fit map to its bounds after the api is loaded
+// const apiIsLoaded = (map, maps, places) => {
+//     // Get bounds by our places
+//     const bounds = getMapBounds(map, maps, places);
+//     // Fit map to bounds
+//     map.fitBounds(bounds);
+//     // Bind the resize listener
+//     bindResizeListener(map, maps, bounds);
+//   };
 
 //---<LOCATION OF USER>------------------------
 const Marker = ({ title }) => (
@@ -41,7 +75,7 @@ class MapView extends Component {
         super(props)
         this.state = {
             // The map center
-            center: { lat: 5.6219868, lng: -0.23223 },
+            center: { lat: 44.972044, lng: -93.264819 },
             // Location for other online users
             locations: {},
             // Users currently online
@@ -145,10 +179,13 @@ class MapView extends Component {
     // =========================<RENDER>===========================================
     render() {
 
+        
+        
         // -----<Creates a list of Marker's for each online user>----------
         let locationMarkers = Object.keys(this.state.locations).map((username, id) => {
             // -----<RETURN THE USERS LOCATION>----------
             return (
+                
                 <Marker
                     key={id}
                     title={`${username === this.state.current_user ? 'My location' : username + "'s location"}`}
@@ -159,15 +196,17 @@ class MapView extends Component {
             ); // ------<END USER LOCATION RETURN>-------
         }); // ----------------<END locationMarkers>--------------------
 
-        // -----<RETURN THE ACTUAL GOOGLE MAP API>----------
+        // -----<RETURN THE ACTUAL GOOGLE MAP API>-----------------------------------
         return (
-            <div >
+            <div style={mapStyles}>
                 <GoogleMap
-                    style={mapStyles}
+                    // style={mapStyles}
                     // Enter in your API key
                     bootstrapURLKeys={{ key: 'AIzaSyCm4Rm_ufmh4QQpWaohfbJLXSsbPTwDurQ' }}
                     center={this.state.center}
-                    zoom={14}
+                    defaultZoom={10}
+                    yesIWantToUseGoogleMapApiInternal={true} // To prevent bugs from internal api objects
+                    // onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, places)}
                 >
                     {locationMarkers}
                 </GoogleMap>
