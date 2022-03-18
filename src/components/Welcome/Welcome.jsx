@@ -23,7 +23,12 @@ function Welcome() {
     }, [])
 
     const fetchDailyPrayer = () => {
-        axios.get('/')
+        axios.get('/prayers')
+            .then(response => {
+                dispatch({type: 'SET_ALL_PRAYERS', payload: response.data});
+            }).catch(error => {
+                console.log('Error in fetchDailyPrayer on Welcome.jsx:', error);
+            })
     }
 
   // =============<GET Daily Prayer from server>============================
