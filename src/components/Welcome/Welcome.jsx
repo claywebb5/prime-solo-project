@@ -20,12 +20,12 @@ function Welcome() {
 
     const user = useSelector((store) => store.user);
     const prayerList = useSelector(store => store.allPrayersReducer);
-    const tasksList = useSelector(store => store.tasksReducer);
+    const tasksList = useSelector(store => store.tasksList);
 
     useEffect(() => {
         // fetchDailyPrayer();
         dispatch({ type: 'FETCH_ALL_PRAYERS' })
-        dispatch({type: 'FETCH_TASKS'})
+        dispatch({ type: 'FETCH_TASKS' })
     }, [])
 
     function handleEdit(prayer) {
@@ -95,35 +95,38 @@ function Welcome() {
             <br />
             {/* ============<START DAILY TASKS/REMINDERS>============= */}
 
+            {tasksList.map(task => {
+                return (
+                    <Card key={task.id}>
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h1">
+                                <u>Daily Tasks and Reminders</u>
+                            </Typography>
+                            <Typography gutterBottom variant="h5" component="h2">
+                                
+                            </Typography>
 
-            <Card>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h1">
-                        <u>Daily Tasks and Reminders</u>
-                    </Typography>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        ~Tasks & Reminders~
-                    </Typography>
+                            <Typography variant="body2" color="textPrimary" component="p">
+                                {task.name}
+                            </Typography>
 
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        ~Here are your daily tasks and reminders to focus on.~
-                    </Typography>
+                        </CardContent>
 
-                </CardContent>
+                        <CardActions disableSpacing>
 
-                <CardActions disableSpacing>
+                            <Button size="small" color="primary" onClick={handleNew}>
+                                New
+                            </Button>
 
-                    <Button size="small" color="primary" onClick={handleNew}>
-                        New
-                    </Button>
+                            <Button size="small" color="secondary">
+                                Delete
+                            </Button>
 
-                    <Button size="small" color="secondary">
-                        Delete
-                    </Button>
-
-                </CardActions>
-            </Card>
-            {/* --------------<END DAILY TASKS/REMINDERS>--------------------- */}
+                        </CardActions>
+                    </Card>
+                );
+            })}
+            {/* --------------<END DAILY TASKS/REMINDERS>--------------------- */ }
         </>
     );
 }

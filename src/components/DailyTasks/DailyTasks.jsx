@@ -23,8 +23,8 @@ function DailyTasks() {
     }
     return (
         <>
-            <h1>Prayer Edit</h1>
-            <div key={prayer.id}>
+            <h1>Task Edit</h1>
+            {/* <div key={tasks.id}>
                 <h3>{prayer.prayer_name}</h3>
                 <h4>"{prayer.prayer_text}"</h4>
 
@@ -34,10 +34,10 @@ function DailyTasks() {
                     onChange={evt => setNewInterpretation(evt.target.value)}
                 />
                 <button onClick={handleSubmit}>Submit</button>
-            </div>
+            </div> */}
             
             <Button variant="contained" onClick={handleReturn}>Home</Button>
-            {/* <h1>** ADD TO FAVORITE LIST OF PRAYERS **</h1> */}
+            
         </>
     )
 }
