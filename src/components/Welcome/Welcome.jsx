@@ -19,17 +19,18 @@ function Welcome() {
 
     // Trigger daily prayer
     useEffect(() => {
-        fetchDailyPrayer();
+        // fetchDailyPrayer();
+        dispatch({type: 'FETCH_ALL_PRAYERS'})
     }, [])
 
-    const fetchDailyPrayer = () => {
-        axios.get('/prayers')
-            .then(response => {
-                dispatch({type: 'SET_ALL_PRAYERS', payload: response.data});
-            }).catch(error => {
-                console.log('Error in fetchDailyPrayer on Welcome.jsx:', error);
-            })
-    }
+    // const fetchDailyPrayer = () => {
+    //     axios.get('/prayers')
+    //         .then(response => {
+    //             dispatch({type: 'SET_ALL_PRAYERS', payload: response.data});
+    //         }).catch(error => {
+    //             console.log('Error in fetchDailyPrayer on Welcome.jsx:', error);
+    //         })
+    // }
 
   // =============<GET Daily Prayer from server>============================
 
