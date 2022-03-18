@@ -9,6 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import PrayerForm from '../PrayerForm/PrayerForm';
+import PrayerList from '../PrayerList/PrayerList';
 
 
 function Welcome() {
@@ -17,22 +18,7 @@ function Welcome() {
 
     const dispatch = useDispatch();
 
-    // Trigger daily prayer
-    useEffect(() => {
-        // fetchDailyPrayer();
-        dispatch({type: 'FETCH_ALL_PRAYERS'})
-    }, [])
-
-    // const fetchDailyPrayer = () => {
-    //     axios.get('/prayers')
-    //         .then(response => {
-    //             dispatch({type: 'SET_ALL_PRAYERS', payload: response.data});
-    //         }).catch(error => {
-    //             console.log('Error in fetchDailyPrayer on Welcome.jsx:', error);
-    //         })
-    // }
-
-  // =============<GET Daily Prayer from server>============================
+    
 
     
     return (
@@ -48,6 +34,8 @@ function Welcome() {
                     <Typography gutterBottom variant="h5" component="h2">
                         Daily Prayer
                     </Typography>
+                    
+                    <PrayerList />
 
                     <Typography variant="body2" color="textSecondary" component="p">
                         Reflect on the following prayer and please enter your interpretation.

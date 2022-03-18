@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 const userRouter = require('./routes/user.router');
 
 // Daily prayer------
-const prayerRouter = require('./routes/prayer.router');
+const prayerRouter = require('./routes/prayer.router.js');
 
 // =====<BODY PARSER MIDDLEWARE>===============================================================================
 app.use(bodyParser.json());
