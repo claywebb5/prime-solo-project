@@ -15,6 +15,7 @@ function EditPrayer() {
 
    function handleSubmit() {
        alert(`LOL Can't do that yet`);
+       setNewInterpretation('');
    }
 
     function handleReturn(){
@@ -36,7 +37,7 @@ function EditPrayer() {
             </div>
             
             <Button variant="contained" onClick={handleReturn}>Home</Button>
-            <h1>** ADD TO FAVORITE LIST OF PRAYERS **</h1>
+            {/* <h1>** ADD TO FAVORITE LIST OF PRAYERS **</h1> */}
         </>
     )
 }

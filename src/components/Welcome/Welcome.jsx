@@ -20,10 +20,12 @@ function Welcome() {
 
     const user = useSelector((store) => store.user);
     const prayerList = useSelector(store => store.allPrayersReducer);
+    const tasksList = useSelector(store => store.tasksReducer);
 
     useEffect(() => {
         // fetchDailyPrayer();
         dispatch({ type: 'FETCH_ALL_PRAYERS' })
+        dispatch({type: 'FETCH_TASKS'})
     }, [])
 
     function handleEdit(prayer) {
@@ -36,11 +38,16 @@ function Welcome() {
         history.push('/prayer-edit');
     }
 
+    function handleNew() {
+        console.log('Clicked New Task');
+        history.push('/new-task');
+    }
+
     return (
         <>
             <div className="container">
                 <h2>Welcome, {user.username}!</h2>
-                <p>Your ID is: {user.id}</p>
+                {/* <p>Your ID is: {user.id}</p> */}
             </div>
 
             {/* ============<START DAILY PRAYER CARD>============= */}
@@ -106,8 +113,8 @@ function Welcome() {
 
                 <CardActions disableSpacing>
 
-                    <Button size="small" color="primary">
-                        Submit
+                    <Button size="small" color="primary" onClick={handleNew}>
+                        New
                     </Button>
 
                     <Button size="small" color="secondary">
