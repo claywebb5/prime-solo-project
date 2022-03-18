@@ -1,31 +1,21 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-// worker Saga: will be fired on "FETCH_USER" actions
-function* fetchUser() {
-  try {
-    const config = {
-      headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
-    };
+// worker Saga: will be fired on "FETCH_ALL_PRAYERS" actions
+function* fetchAllPrayers() {
+    // get all prayers from the DB
+    try {
+        const allPrayers = yield axios.get('/api/prayers');
+        console.log('get all:', allPrayers.data);
+        yield put({ type: 'SET_ALL_PRAYERS', payload: allPrayers.data });
 
-    // the config includes credentials which
-    // allow the server session to recognize the user
-    // If a user is logged in, this will return their information
-    // from the server session (req.user)
-    const response = yield axios.get('/api/user', config);
-
-    // now that the session has given us a user object
-    // with an id and username set the client-side user object to let
-    // the client-side code know the user is logged in
-    yield put({ type: 'SET_USER', payload: response.data });
-  } catch (error) {
-    console.log('User get request failed', error);
-  }
+    } catch {
+        console.log('Error trying to fetchAllPrayers in sagas');
+    }
 }
 
-function* userSaga() {
-  yield takeLatest('FETCH_USER', fetchUser);
+function* allPrayersSaga() {
+  yield takeLatest('FETCH_ALL_PRAYERS', fetchAllPrayers);
 }
 
-export default userSaga;
+export default allPrayersSaga;

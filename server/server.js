@@ -74,7 +74,7 @@ app.post('/update-location', (req, res) => {
 app.use('/api/user', userRouter);
 
 // Prayer route----------------------------
-app.use('/prayer', prayerRouter);
+app.use('/api/prayer', prayerRouter);
 
 
 // =====<SERVE STATIC FILES>====================================================================================
