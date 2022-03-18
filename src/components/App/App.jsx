@@ -26,11 +26,6 @@ function App() {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
 
-  // Trigger daily prayer
-  useEffect(() => {
-    // fetchDailyPrayer();
-    dispatch({type: 'FETCH_ALL_PRAYERS'})
-}, [])
 
   return (
 

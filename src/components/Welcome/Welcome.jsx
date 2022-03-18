@@ -1,7 +1,7 @@
 // ========================<THIS IS THE WELCOME VIEW>====================
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import './Welcome.css';
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -18,9 +18,13 @@ function Welcome() {
 
     const dispatch = useDispatch();
 
-    
+    const prayerList = useSelector(store => store.allPrayersReducer);
 
-    
+    useEffect(() => {
+        // fetchDailyPrayer();
+        dispatch({ type: 'FETCH_ALL_PRAYERS' })
+    }, [])
+
     return (
         <>
             <div className="container">
@@ -29,42 +33,62 @@ function Welcome() {
             </div>
 
             {/* ============<START DAILY PRAYER CARD>============= */}
+
+
+            {prayerList.map(prayer => {
+                return (
+                    <Card key={prayer.id}>
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h1">
+                                <u>Daily Prayer</u>
+                            </Typography>
+                            <Typography gutterBottom variant="h5" component="h2">
+                                {prayer.prayer_name}
+                            </Typography>
+
+                            {/* <PrayerList /> */}
+
+                            <Typography variant="body2" color="textPrimary" component="p">
+                                "{prayer.prayer_text}"
+                            </Typography>
+                            <br />
+                            <i>Reflect on the following prayer and please enter your interpretation:</i>
+                            <Typography variant="body2" color="textPrimary" component="p">
+                                {/* <i>Reflect on the following prayer and please enter your interpretation:</i> */}
+                                <br />
+                                {prayer.interpretation}
+                            </Typography>
+                        </CardContent>
+
+                        <CardActions disableSpacing>
+                            <Button size="small" color="primary">
+                                Submit
+                            </Button>
+
+                            <Button size="small" color="secondary">
+                                Delete
+                            </Button>
+
+                        </CardActions>
+                    </Card>
+                );
+            })}
+            {/* --------------<END DAILY PRAYER CARD>--------------------- */}
+            <br />
+            {/* ============<START DAILY TASKS/REMINDERS>============= */}
+
+
             <Card>
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        Daily Prayer
+                    <Typography gutterBottom variant="h5" component="h1">
+                        <u>Daily Tasks and Reminders</u>
                     </Typography>
-                    
-                    <PrayerList />
-
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        Reflect on the following prayer and please enter your interpretation.
-                    </Typography>
-                </CardContent>
-
-                <CardActions disableSpacing>
-                    <Button size="small" color="primary">
-                        Submit
-                    </Button>
-
-                    <Button size="small" color="secondary">
-                        Delete
-                    </Button>
-
-                </CardActions>
-            </Card> 
-            {/* --------------<END DAILY PRAYER CARD>--------------------- */}
-
-             {/* ============<START DAILY TASKS/REMINDERS>============= */}
-             <Card>
-                <CardContent>
-
                     <Typography gutterBottom variant="h5" component="h2">
-                        Daily Tasks and Reminders
+                        ~Tasks & Reminders~
                     </Typography>
 
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Here are your daily tasks and reminders to focus on.
+                        ~Here are your daily tasks and reminders to focus on.~
                     </Typography>
 
                 </CardContent>

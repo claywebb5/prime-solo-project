@@ -10,11 +10,11 @@ function PrayerList() {
 
     const prayerList = useSelector(store => store.allPrayersReducer);
 
-    // // Trigger daily prayer
-    // useEffect(() => {
-    //     // fetchDailyPrayer();
-    //     dispatch({type: 'FETCH_ALL_PRAYERS'})
-    // }, [])
+    // Trigger daily prayer
+    useEffect(() => {
+        // fetchDailyPrayer();
+        dispatch({type: 'FETCH_ALL_PRAYERS'})
+    }, [])
 
     // const fetchDailyPrayer = () => {
     //     axios.get('/prayers')
