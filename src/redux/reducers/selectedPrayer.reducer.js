@@ -1,4 +1,4 @@
-
+// ============<SELECTED PRAYER TO BE EDITED REDUCER>=============
 
 // Selected prayer reducer
 const selectedPrayer = (state = [], action) => {
