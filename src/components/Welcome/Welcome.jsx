@@ -10,20 +10,31 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import PrayerForm from '../PrayerForm/PrayerForm';
 import PrayerList from '../PrayerList/PrayerList';
+import { useHistory } from 'react-router-dom';
 
 
 function Welcome() {
 
-    const user = useSelector((store) => store.user);
-
     const dispatch = useDispatch();
+    const history = useHistory();
 
+    const user = useSelector((store) => store.user);
     const prayerList = useSelector(store => store.allPrayersReducer);
 
     useEffect(() => {
         // fetchDailyPrayer();
         dispatch({ type: 'FETCH_ALL_PRAYERS' })
     }, [])
+
+    function handleEdit(prayer) {
+        console.log('Handle Edit of:', prayer.prayer_name);
+        // alert(`Are you sure you want to edit: ${prayer.prayer_name}?`);
+        dispatch({
+            type: 'SELECTED_PRAYER',
+            payload: prayer
+        })
+        history.push('/prayer-edit');
+    }
 
     return (
         <>
@@ -61,8 +72,8 @@ function Welcome() {
                         </CardContent>
 
                         <CardActions disableSpacing>
-                            <Button size="small" color="primary">
-                                Submit
+                            <Button size="small" color="primary" onClick={() => handleEdit(prayer)}>
+                                Edit
                             </Button>
 
                             <Button size="small" color="secondary">
