@@ -14,6 +14,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import EditPrayer from '../EditPrayer/EditPrayer';
+import DailyTasks from '../DailyTasks/DailyTasks';
 import './App.css';
 
 
@@ -68,6 +69,15 @@ function App() {
             path="/prayer-edit"
           >
             <EditPrayer />
+          </ProtectedRoute>
+
+          {/* ========<EDIT TASKS VIEW>=================== */}
+          <ProtectedRoute
+            // logged in shows WELCOME VIEW else shows LoginPage
+            exact
+            path="/new-task"
+          >
+            <DailyTasks />
           </ProtectedRoute>
 
           {/* ========<TWELVE STEP PROGRAM>=================== */}

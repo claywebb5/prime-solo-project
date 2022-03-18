@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   console.log(req.body);
-  // RETURNING "id" will give us back the id of the created movie
+  // RETURNING "id" will give us back the id of the created task
   const insertTaskQuery = `
   INSERT INTO "tasks" ("name")
   VALUES ($1);`;
