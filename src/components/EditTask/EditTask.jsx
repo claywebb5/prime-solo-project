@@ -2,15 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from "@material-ui/core";
+import { Container } from '@material-ui/core';
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+// import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
-function EditPrayer() {
+function EditTask() {
 
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const [newInterpretation, setNewInterpretation] = useState('');
 
-    const prayer = useSelector(store => store.selectedPrayer)
+
+    const tasksList = useSelector(store => store.tasksList);
+
 
     function handleSubmit() {
         alert(`LOL Can't do that yet`);
@@ -22,21 +29,34 @@ function EditPrayer() {
     }
     return (
         <>
-            <div>
-                <h3>New Task</h3>
-                <input
-                    value={newTask}
-                    onChange={evt => setNewTask(evt.target.value)}
-                />
-                <button onClick={handleSubmit}>Submit</button>
-            </div>
 
-            <h1>Edit Task</h1>
-            <div key={prayer.id}>
-                <h3>{prayer.prayer_name}</h3>
-                <h4>"{prayer.prayer_text}"</h4>
-            </div>
+            {tasksList.map(task => {
+                return (
+                    <Card key={task.id}>
+                        <CardContent>
+                            <Typography gutterBottom variant="h6" component="h4">
+                                {task.name}
+                            </Typography>
+                        </CardContent>
 
+                        <CardActions disableSpacing>
+
+                            <Button size="small" color="primary" >
+                                New
+                            </Button>
+
+                            <Button size="small" color="primary" onClick={() => handleTaskEdit(task)}>
+                                Edit
+                            </Button>
+
+                            <Button size="small" color="secondary">
+                                Delete
+                            </Button>
+
+                        </CardActions>
+                    </Card>
+                );
+            })}
             <Button variant="contained" onClick={handleReturn}>Home</Button>
 
         </>
