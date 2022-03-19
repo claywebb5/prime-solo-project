@@ -1,22 +1,34 @@
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Redirect, Route, Switch, } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import AboutPage from '../AboutPage/AboutPage';
-import Welcome from '../Welcome/Welcome';
-import UserPage from '../UserPage/UserPage';
-import Literature from '../Literature/Literature';
-import MapView from '../Map/Map';
-import TwelveSteps from '../TwelveSteps/TwelveSteps';
-import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
-import EditPrayer from '../EditPrayer/EditPrayer';
-import DailyTasks from '../DailyTasks/DailyTasks';
 import './App.css';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
+
+import Nav from '../Nav/Nav'; // Header & Nav Bar
+import Footer from '../Footer/Footer'; // Footer
+
+
+import AboutPage from '../AboutPage/AboutPage'; // "About" - Info Page
+import Welcome from '../Welcome/Welcome'; // "Home" - Daily Prayer & Tasks
+import UserPage from '../UserPage/UserPage'; // "Profile" - User info
+
+import Literature from '../Literature/Literature'; // "Literature" - Big Book
+
+import MapView from '../Map/Map'; // "Map" - The Map
+
+import TwelveSteps from '../TwelveSteps/TwelveSteps'; // "12 Steps"
+
+import LandingPage from '../LandingPage/LandingPage'; // "Register" - Register View
+
+import LoginPage from '../LoginPage/LoginPage'; // "Login" - Login View
+import RegisterPage from '../RegisterPage/RegisterPage'; // "Register" - Hosts the register form
+
+import EditPrayer from '../EditPrayer/EditPrayer'; // "EDIT BUTTON" - Edit the specific Daily Prayer from Welcome View
+
+import ManageTasks from '../ManageTasks/ManageTasks'; // "MANAGE TASKS BUTTON" - Manage all tasks
+
+// "MANAGE PRAYERS BUTTON" - Manage all prayers
 
 
 function App() {
@@ -75,9 +87,9 @@ function App() {
           <ProtectedRoute
             // logged in shows WELCOME VIEW else shows LoginPage
             exact
-            path="/new-task"
+            path="/tasks"
           >
-            <DailyTasks />
+            <ManageTasks />
           </ProtectedRoute>
 
           {/* ========<TWELVE STEP PROGRAM>=================== */}

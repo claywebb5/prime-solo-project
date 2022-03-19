@@ -12,7 +12,7 @@ const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
 
-// GET ALL PRAYERS
+// =================<(READ) GET ALL PRAYERS>=========================
 router.get('/', rejectUnauthenticated, (req, res) => {
     // let queryText = `SELECT "prayer"."prayer_name", "prayer"."prayer_text", "prayer"."interpretation", "user"."username" FROM "prayer"
     // LEFT JOIN "user" ON "user"."id"="prayer"."user_id";`;

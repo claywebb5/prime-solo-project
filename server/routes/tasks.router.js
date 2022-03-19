@@ -5,7 +5,7 @@ const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 
-
+// =================<(READ) GET ALL TASKS>=========================
 router.get('/', (req, res) => {
   const query = `SELECT * FROM tasks ORDER BY "id" ASC`;
   pool.query(query)
@@ -19,8 +19,11 @@ router.get('/', (req, res) => {
 
 });
 
+// ===================<(CREATE) POST NEW TASK>=========================
 router.post('/', (req, res) => {
   console.log(req.body);
+  console.log(req.body.name);
+
   // RETURNING "id" will give us back the id of the created task
   const insertTaskQuery = `
   INSERT INTO "tasks" ("name")
@@ -35,5 +38,18 @@ router.post('/', (req, res) => {
     });
 });
 
+
+// ===================<(UPDATE) PUT AN UPDATE ON A TASK>=========================
+router.put('/', (req, res) => {
+  // req.body should contain a category_id to add to this favorite image
+  res.sendStatus(200);
+});
+
+
+
+// ===================<(DELETE) DELETE A TASK>=========================
+router.delete('/', (req, res) => {
+  res.sendStatus(200);
+});
 
 module.exports = router;

@@ -26,11 +26,11 @@ function LandingPage() {
   //=================<START RETURN>====================================================================
   return (
     <div className="container">
-      <div>
+      {/* <div>
         <h1>Login info:</h1>
         <li>Username: clay</li>
         <li>Password: 1234</li>
-      </div>
+      </div> */}
       <h2>{heading}</h2>
 
       <div className="grid">

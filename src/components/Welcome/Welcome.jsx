@@ -42,7 +42,7 @@ function Welcome() {
     function handleNew() {
         console.log('Clicked New Task');
 
-        history.push('/new-task');
+        history.push('/tasks');
     }
 
     function handleTaskEdit(task) {
@@ -64,45 +64,51 @@ function Welcome() {
 
             {/* ============<START DAILY PRAYER CARD>============= */}
 
+            <Container>
 
-            {prayerList.map(prayer => {
-                return (
-                    <Card key={prayer.id}>
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h1">
-                                <u>Daily Prayer</u>
-                            </Typography>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                {prayer.prayer_name}
-                            </Typography>
-
-                            {/* <PrayerList /> */}
-
-                            <Typography variant="body2" color="textPrimary" component="p">
-                                "{prayer.prayer_text}"
-                            </Typography>
-                            <br />
-                            <i>Reflect on the following prayer and please enter your interpretation:</i>
-                            <Typography variant="body2" color="textPrimary" component="p">
-                                {/* <i>Reflect on the following prayer and please enter your interpretation:</i> */}
+                {prayerList.map(prayer => {
+                    return (
+                        <Card key={prayer.id}>
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h1">
+                                    <u>Daily Prayer</u>
+                                </Typography>
+                                <Button variant="contained" color="success">Manage Prayers</Button>
                                 <br />
-                                {prayer.interpretation}
-                            </Typography>
-                        </CardContent>
+        
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {prayer.prayer_name}
+                                </Typography>
 
-                        <CardActions disableSpacing>
-                            <Button size="small" color="primary" onClick={() => handleEdit(prayer)}>
-                                Edit
-                            </Button>
+                                {/* <PrayerList /> */}
 
-                            <Button size="small" color="secondary">
-                                Delete
-                            </Button>
+                                <Typography variant="body2" color="textPrimary" component="p">
+                                    "{prayer.prayer_text}"
+                                </Typography>
+                                <br />
+                                <i>Reflect on the following prayer and please enter your interpretation:</i>
+                                <Typography variant="body2" color="textPrimary" component="p">
+                                    {/* <i>Reflect on the following prayer and please enter your interpretation:</i> */}
+                                    <br />
+                                    {prayer.interpretation}
+                                </Typography>
+                            </CardContent>
 
-                        </CardActions>
-                    </Card>
-                );
-            })}
+                            <CardActions disableSpacing>
+                                <Button size="small" color="primary" onClick={() => handleEdit(prayer)}>
+                                    Edit
+                                </Button>
+
+                                <Button size="small" color="secondary">
+                                    Delete
+                                </Button>
+
+                            </CardActions>
+                        </Card>
+                    );
+                })}
+            </Container>
+
             {/* --------------<END DAILY PRAYER CARD>--------------------- */}
             <br />
             {/* ============<START DAILY TASKS/REMINDERS>============= */}
@@ -111,24 +117,22 @@ function Welcome() {
                 <Typography gutterBottom variant="h5" component="h1">
                     <u>Daily Tasks and Reminders</u>
                 </Typography>
+                <Button variant="contained" color="success" onClick={handleNew}>
+                    Manage Tasks
+                </Button>
+                <br />
                 {tasksList.map(task => {
                     return (
                         <Card key={task.id}>
                             <CardContent>
-
-                                <Typography gutterBottom variant="h5" component="h2">
-
-                                </Typography>
-
-                                <Typography variant="body2" color="textPrimary" component="p">
+                                <Typography gutterBottom variant="h6" component="h4">
                                     {task.name}
                                 </Typography>
-
                             </CardContent>
 
                             <CardActions disableSpacing>
 
-                                <Button size="small" color="primary" onClick={handleNew}>
+                                <Button size="small" color="primary" >
                                     New
                                 </Button>
 

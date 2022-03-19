@@ -1,6 +1,6 @@
 // *** THIS WILL HOLD  ***
 
-import {put} from 'redux-saga/effects';
+import {put, takeLatest} from 'redux-saga/effects';
 import axios from 'axios';
 
 
@@ -8,6 +8,7 @@ import axios from 'axios';
 // *** POST ***
 function* addTask(action) {
     try {
+        console.log('action.payload is:', action.payload)
         yield axios.post('/api/tasks', action.payload);
         yield put({ type: 'FETCH_TASKS' });
     } catch (error) {
@@ -15,5 +16,9 @@ function* addTask(action) {
     }    
 }
 
+function* addTaskSaga() {
+    yield takeLatest('ADD_TASK', addTask);
+  }
 
-export default addTask;
+
+export default addTaskSaga;
