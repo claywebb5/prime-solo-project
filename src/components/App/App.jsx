@@ -75,7 +75,7 @@ function App() {
           <ProtectedRoute
             // logged in shows WELCOME VIEW else shows LoginPage
             exact
-            path="/new-task"
+            path="/tasks"
           >
             <DailyTasks />
           </ProtectedRoute>

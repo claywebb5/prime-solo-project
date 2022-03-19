@@ -42,7 +42,7 @@ function Welcome() {
     function handleNew() {
         console.log('Clicked New Task');
 
-        history.push('/new-task');
+        history.push('/tasks');
     }
 
     function handleTaskEdit(task) {
