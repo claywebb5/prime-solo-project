@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import './Welcome.css';
+import { Container } from '@material-ui/core';
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -40,7 +41,18 @@ function Welcome() {
 
     function handleNew() {
         console.log('Clicked New Task');
+
         history.push('/new-task');
+    }
+
+    function handleTaskEdit(task) {
+        console.log('Handle Edit of:', task.name);
+        // alert(`Are you sure you want to edit: ${prayer.prayer_name}?`);
+        // dispatch({
+        //     type: 'SELECTED_PRAYER',
+        // payload: prayer
+        // })
+        history.push('/task-edit'); // **NEEDS TO BE CREATED**
     }
 
     return (
@@ -95,38 +107,45 @@ function Welcome() {
             <br />
             {/* ============<START DAILY TASKS/REMINDERS>============= */}
 
-            {tasksList.map(task => {
-                return (
-                    <Card key={task.id}>
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h1">
-                                <u>Daily Tasks and Reminders</u>
-                            </Typography>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                
-                            </Typography>
+            <Container>
+                <Typography gutterBottom variant="h5" component="h1">
+                    <u>Daily Tasks and Reminders</u>
+                </Typography>
+                {tasksList.map(task => {
+                    return (
+                        <Card key={task.id}>
+                            <CardContent>
 
-                            <Typography variant="body2" color="textPrimary" component="p">
-                                {task.name}
-                            </Typography>
+                                <Typography gutterBottom variant="h5" component="h2">
 
-                        </CardContent>
+                                </Typography>
 
-                        <CardActions disableSpacing>
+                                <Typography variant="body2" color="textPrimary" component="p">
+                                    {task.name}
+                                </Typography>
 
-                            <Button size="small" color="primary" onClick={handleNew}>
-                                New
-                            </Button>
+                            </CardContent>
 
-                            <Button size="small" color="secondary">
-                                Delete
-                            </Button>
+                            <CardActions disableSpacing>
 
-                        </CardActions>
-                    </Card>
-                );
-            })}
-            {/* --------------<END DAILY TASKS/REMINDERS>--------------------- */ }
+                                <Button size="small" color="primary" onClick={handleNew}>
+                                    New
+                                </Button>
+
+                                <Button size="small" color="primary" onClick={() => handleTaskEdit(task)}>
+                                    Edit
+                                </Button>
+
+                                <Button size="small" color="secondary">
+                                    Delete
+                                </Button>
+
+                            </CardActions>
+                        </Card>
+                    );
+                })}
+            </Container>
+            {/* --------------<END DAILY TASKS/REMINDERS>--------------------- */}
         </>
     );
 }

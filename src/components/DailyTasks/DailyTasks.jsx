@@ -14,8 +14,9 @@ function DailyTasks() {
     const tasksList = useSelector(store => store.tasksList);
 
    function handleSubmit() {
-       alert(`LOL Can't do that yet`);
-       setNewInterpretation('');
+       console.log('Submitting new task');
+       
+       setNewTask('');
    }
 
     function handleReturn(){
@@ -23,7 +24,20 @@ function DailyTasks() {
     }
     return (
         <>
-            <h1>Task Edit</h1>
+            <h1>Current Tasks</h1>
+            <section className="tasks">
+                {tasksList.map(task => {
+                    return (
+                        <div key={task.id}>
+                            <h3>{task.name}</h3>
+                            <h4>Completed? {task.completed}</h4>
+                        </div>
+                    );
+                })}
+            </section>
+
+            <br />
+            <h1>New Task</h1>
             {/* <div key={tasks.id}>
                 <h3>{prayer.prayer_name}</h3>
                 <h4>"{prayer.prayer_text}"</h4>
