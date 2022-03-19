@@ -8,6 +8,7 @@ import axios from 'axios';
 // *** POST ***
 function* addTask(action) {
     try {
+        console.log('action.payload is:', action.payload)
         yield axios.post('/api/tasks', action.payload);
         yield put({ type: 'FETCH_TASKS' });
     } catch (error) {

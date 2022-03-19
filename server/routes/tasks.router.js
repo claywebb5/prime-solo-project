@@ -22,6 +22,8 @@ router.get('/', (req, res) => {
 // ===================<(CREATE) POST NEW TASK>=========================
 router.post('/', (req, res) => {
   console.log(req.body);
+  console.log(req.body.name);
+
   // RETURNING "id" will give us back the id of the created task
   const insertTaskQuery = `
   INSERT INTO "tasks" ("name")

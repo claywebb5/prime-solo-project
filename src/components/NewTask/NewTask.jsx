@@ -19,12 +19,14 @@ function NewTask() {
     const [newTask, setNewTask] = useState('');
 
     // Submit task
-    const handleSubmit = (event) => {
+    const handleSubmit = () => {
         event.preventDefault();
         console.log('newTask in handleSubmit is:', newTask);
         dispatch({
             type: 'ADD_TASK',
-            payload: newTask
+            payload: {
+                name: newTask
+            }
         });
         setNewTask('');
     //    { history.push('/welcome');}
