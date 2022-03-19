@@ -13,6 +13,8 @@ import TwelveSteps from '../TwelveSteps/TwelveSteps';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import EditPrayer from '../EditPrayer/EditPrayer';
+import DailyTasks from '../DailyTasks/DailyTasks';
 import './App.css';
 
 
@@ -25,6 +27,7 @@ function App() {
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
+
 
   return (
 
@@ -50,13 +53,31 @@ function App() {
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
           
-          {/* ========<>=================== */}
+          {/* ========<WELCOME VIEW>=================== */}
           <ProtectedRoute
             // logged in shows WELCOME VIEW else shows LoginPage
             exact
             path="/welcome"
           >
             <Welcome />
+          </ProtectedRoute>
+
+          {/* ========<EDIT PRAYER VIEW>=================== */}
+          <ProtectedRoute
+            // logged in shows edit prayer view else shows LoginPage
+            exact
+            path="/prayer-edit"
+          >
+            <EditPrayer />
+          </ProtectedRoute>
+
+          {/* ========<EDIT TASKS VIEW>=================== */}
+          <ProtectedRoute
+            // logged in shows WELCOME VIEW else shows LoginPage
+            exact
+            path="/new-task"
+          >
+            <DailyTasks />
           </ProtectedRoute>
 
           {/* ========<TWELVE STEP PROGRAM>=================== */}

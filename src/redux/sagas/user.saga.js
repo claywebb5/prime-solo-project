@@ -8,6 +8,7 @@ function* fetchUser() {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     };
+    
 
     // the config includes credentials which
     // allow the server session to recognize the user

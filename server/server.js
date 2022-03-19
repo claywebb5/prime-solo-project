@@ -29,6 +29,12 @@ app.use((req, res, next) => {
 // =====<ROUTE INCLUDES>=======================================================================================
 const userRouter = require('./routes/user.router');
 
+// Daily prayer------
+const prayerRouter = require('./routes/prayer.router.js');
+
+// Daily Tasks------
+const tasksRouter = require('./routes/tasks.router.js');
+
 // =====<BODY PARSER MIDDLEWARE>===============================================================================
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -69,6 +75,13 @@ app.post('/update-location', (req, res) => {
 
 // -----<This route handles user authentication (login, logout, and registration)>--------------------------
 app.use('/api/user', userRouter);
+
+// Prayer route----------------------------
+app.use('/api/prayer', prayerRouter);
+
+// Tasks route----------------------------
+app.use('/api/tasks', tasksRouter);
+
 
 // =====<SERVE STATIC FILES>====================================================================================
   // For production build
