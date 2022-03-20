@@ -18,14 +18,28 @@ function ManageTasks() {
 
     const tasksList = useSelector(store => store.tasksList);
 
-    function handleTaskEdit(task) {
-        console.log('Handle Edit of:', task.name);
-        // alert(`Are you sure you want to edit: ${prayer.prayer_name}?`);
+    const handleTaskEdit = (id) => {
+        console.log('Handle Edit of:', id);
+        let taskToEdit;
+        for (let task of tasksList) {
+            if (task.id === id) {
+                taskToEdit = {
+                    id: task.id,
+                    name: task.name,
+                    complete: task.complete,
+                    notStarted: task.notStarted,
+                    inProgress: task.inProgress
+                }
+            }
+        }
+        console.log('taskToEdit:', taskToEdit);
+        
         // dispatch({
-        //     type: 'SELECTED_PRAYER',
-        // payload: prayer
-        // })
-        history.push('/edit-task'); // **NEEDS TO BE CREATED**
+        //     type: 'SET_TASK',
+        //     payload: taskToEdit
+        // });
+
+        // history.push('/edit-task'); // **NEEDS TO BE CREATED**
     }
 
 
@@ -42,11 +56,6 @@ function ManageTasks() {
             </Card>
         </Container>
 
-        {/* <Container>
-            <Card>
-                <EditTask />
-            </Card>
-        </Container> */}
         <Container>
                 <Typography gutterBottom variant="h5" component="h1">
                     <u>Daily Tasks and Reminders</u>
@@ -67,7 +76,7 @@ function ManageTasks() {
                                     New
                                 </Button>
 
-                                <Button size="small" color="primary" onClick={() => handleTaskEdit(task)}>
+                                <Button size="small" color="primary" onClick={() => handleTaskEdit(task.id)}>
                                     Edit
                                 </Button>
 
