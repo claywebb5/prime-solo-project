@@ -19,15 +19,31 @@ function EditTask() {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    // State of the form dialog
+    const [open, setOpen] = useState(false);
     const tasksList = useSelector(store => store.tasksList);
 
     const handleTaskEdit = (task) => {
         console.log('Clicked Edit on:', task);
+        handleClickOpen();
+        // console.log('open?', open);
+        
     }
 
     const handleDelete = (task) => {
         console.log('Clicked Delete on:', task);
     }
+
+    // Open the new task form dialog
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    // Close the new task form dialog
+    // ** Call this in the submit button function
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     function handleReturn() {
         history.push('/welcome');
