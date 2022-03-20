@@ -32,14 +32,12 @@ function ManageTasks() {
                 }
             }
         }
-        console.log('taskToEdit:', taskToEdit);
-        
-        // dispatch({
-        //     type: 'SET_TASK',
-        //     payload: taskToEdit
-        // });
+        dispatch({
+            type: 'SET_EDIT_TASK',
+            payload: taskToEdit
+        });
 
-        // history.push('/edit-task'); // **NEEDS TO BE CREATED**
+        history.push('/edit-task'); // **NEEDS TO BE CREATED**
     }
 
 
