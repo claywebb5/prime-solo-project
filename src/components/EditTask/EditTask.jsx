@@ -16,20 +16,20 @@ import DialogTitle from '@mui/material/DialogTitle';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 
 function EditTask() {
-    const tasksList = useSelector(store => store.tasksList);
+    const task = useSelector(store => store.editTaskReducer);
     const history = useHistory();
     const dispatch = useDispatch();
 
     let taskObj = {
-        id: tasksList.id,
-        name: tasksList.name,
-        complete: tasksList.complete,
-        notStarted: tasksList.notStarted,
-        inProgress: tasksList.inProgress
+        id: task.id,
+        name: task.name,
+        complete: task.complete,
+        notStarted: task.notStarted,
+        inProgress: task.inProgress
     };
 
     // State of the form dialog
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
     const [editTask, setEditTask] = useState(taskObj);
     const [taskStatus, setTaskStatus] = useState('');
     // const [editName, setEditName] = useState('');
@@ -96,11 +96,8 @@ function EditTask() {
 
     return (
         <>
-
-            {tasksList.map(task => {
-                return (
                     <Card key={task.id}>
-                        <Card className="taskContent">
+                        {/* <Card className="taskContent">
                             <CardContent>
                                 <Typography gutterBottom variant="h6" component="h4">
                                     {task.name}
@@ -109,7 +106,7 @@ function EditTask() {
                                     Task Status: {taskStatus}
                                 </Typography>
                                 {/* </CardContent> */}
-                                <CardActions disableSpacing>
+                                {/* <CardActions disableSpacing>
                                     <Button size="small" color="primary" onClick={() => handleTaskEdit(task)}>
                                         Edit
                                     </Button>
@@ -121,17 +118,12 @@ function EditTask() {
                                     <Button size="small" color="primary" onClick={() => handleTaskStatus(task)}>
                                         <CheckBoxOutlineBlankIcon />
                                     </Button>
-                                </CardActions>
+                                </CardActions> */}
 
                                 <Dialog open={open} onClose={handleClose}>
                                     <DialogTitle>Edit Task</DialogTitle>
                                     <DialogContent>
-                                        <DialogContentText>
-                                            Edit the name of your task
-                                        </DialogContentText>
-                                        <form
-                                            onSubmit={handleSubmit}
-                                        >
+                                        <form onSubmit={handleSubmit}>
                                             <div>
                                                 <TextField
                                                     autoFocus
@@ -157,8 +149,8 @@ function EditTask() {
                                         <Button onClick={handleSubmit}>Submit</Button>
                                     </DialogActions>
                                 </Dialog>
-                            </CardContent>
-                        </Card>
+                            {/* </CardContent>
+                        </Card> */}
                     </Card>
                 );
             })}
