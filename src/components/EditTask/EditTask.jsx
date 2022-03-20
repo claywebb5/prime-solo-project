@@ -22,12 +22,29 @@ function EditTask() {
     // State of the form dialog
     const [open, setOpen] = useState(false);
     const tasksList = useSelector(store => store.tasksList);
+    const [newTaskName, setNewTaskName] = useState();
 
+    // ** THIS WILL HANDLE DISPATCH
     const handleTaskEdit = (task) => {
         console.log('Clicked Edit on:', task);
         handleClickOpen();
-        // console.log('open?', open);
-        
+        console.log('open?', open);
+
+    }
+    // Submit task
+    const handleSubmit = () => {
+        handleClose();
+        console.log('Still open??', open)
+    //     event.preventDefault();
+    //     console.log('newTask in handleSubmit is:', newTask);
+    //     dispatch({
+    //         type: 'ADD_TASK',
+    //         payload: {
+    //             name: newTask
+    //         }
+    //     });
+    //     setNewTask('');
+    //    { history.push('/welcome');}
     }
 
     const handleDelete = (task) => {
@@ -70,6 +87,37 @@ function EditTask() {
                                         Delete
                                     </Button>
                                 </CardActions>
+
+                                <Dialog open={open} onClose={handleClose}>
+                                    <DialogTitle>Edit Task</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            Edit the name of your task
+                                        </DialogContentText>
+                                        <form
+                                            onSubmit={handleSubmit}
+                                        >
+                                            <div>
+                                                <TextField
+                                                    autoFocus
+                                                    margin="dense"
+                                                    id="name"
+                                                    label="Task Name"
+                                                    type="text"
+                                                    fullWidth
+                                                    variant="standard"
+                                                    value={task.name}
+                                                    onChange={e => setNewTask(e.target.value)}
+                                                // onChange={handleChange}
+                                                />
+                                            </div>
+                                        </form>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={handleClose}>Cancel</Button>
+                                        <Button onClick={handleSubmit}>Submit</Button>
+                                    </DialogActions>
+                                </Dialog>
                             </CardContent>
                         </Card>
                     </Card>
