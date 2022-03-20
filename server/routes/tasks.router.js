@@ -41,15 +41,38 @@ router.post('/', (req, res) => {
 
 // ===================<(UPDATE) PUT AN UPDATE ON A TASK>=========================
 router.put('/', (req, res) => {
-  // req.body should contain a category_id to add to this favorite image
-  res.sendStatus(200);
+  const id = req.body.id;
+  const name = req.body.name;
+  const complete = req.body.complete;
+  const notStarted = req.body.notStarted;
+  const inProgress = req.body.inProgress;
+  console.log('Task name is:', name);
+  const query =`UPDATE "tasks" SET name = $1, complete = $2, notStarted = $3, inProgress = $4 WHERE id = $5;`;
+  pool.query(query, [name, complete, notStarted, inProgress, id])
+    .then(result => {
+      res.sendStatus(200);
+    })
+  .catch(err => {
+    console.log('Error editing a task in tasks.router:', err);
+    res.sendStatus(500);
+  })
 });
 
 
 
 // ===================<(DELETE) DELETE A TASK>=========================
 router.delete('/', (req, res) => {
-  res.sendStatus(200);
+  let id = req.params.id;
+  console.log('The task id is:', id);
+  const query =`DELETE FROM "tasks" WHERE id = $1;`;
+  pool.query(query, [id])
+    .then(result => {
+      res.sendStatus(200);
+    })
+    .catch(err => {
+      console.log('Error deleting a task in tasks.router:', err);
+      
+    })
 });
 
 module.exports = router;

@@ -18,7 +18,7 @@ function* fetchTasks() {
 }
 
 function* fetchTasksSaga() {
-  yield takeEvery('FETCH_TASKS', fetchTasks);
+  yield takeLatest('FETCH_TASKS', fetchTasks);
 }
 
 export default fetchTasksSaga;

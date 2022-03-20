@@ -29,7 +29,7 @@ function NewTask() {
             }
         });
         setNewTask('');
-    //    { history.push('/welcome');}
+        { history.push('/welcome'); }
     }
 
     // Open the new task form dialog
@@ -45,15 +45,6 @@ function NewTask() {
 
     return (
         <>
-            {/* <div>
-                <h3>New Task</h3>
-                <input
-                    value={newTask}
-                    onChange={evt => setNewTask(evt.target.value)}
-                />
-                <button onClick={handleSubmit}>Submit</button>
-            </div> */}
-
             <div>
                 <Button variant="outlined" onClick={handleClickOpen}>
                     New Task
@@ -78,7 +69,7 @@ function NewTask() {
                                     variant="standard"
                                     value={newTask}
                                     onChange={e => setNewTask(e.target.value)}
-                                    // onChange={handleChange}
+                                // onChange={handleChange}
                                 />
                             </div>
                         </form>
