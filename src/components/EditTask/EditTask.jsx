@@ -32,7 +32,11 @@ function EditTask() {
     const [open, setOpen] = useState(false);
     const [editTask, setEditTask] = useState(taskObj);
     const [taskStatus, setTaskStatus] = useState('');
-    const [editName, setEditName] = useState('');
+    // const [editName, setEditName] = useState('');
+    const [completed, setCompleted] = useState(false);
+    const [notStarted, setNotStarted] = useState(false);
+    const [inProgress, setInProgress] = useState(false);
+
 
     const handleChange = (event) => {
         setEditTask({...editTask, [event.target.name]: event.target.value})
@@ -42,7 +46,6 @@ function EditTask() {
     const handleTaskEdit = (task) => {
         console.log('Clicked Edit on:', task);
         handleClickOpen();
-        setEditName(task.name);
 
     }
     // Submit task
@@ -60,18 +63,16 @@ function EditTask() {
         //    { history.push('/welcome');}
     }
 
-    const handleTaskStatus = (task) => {
-        const completedReturn = 'Completed';
-        const notStarted = 'Not Started';
-        const inProgress = 'In Progress';
-        if (task.complete === 'TRUE') {
-            setTaskStatus(completedReturn);
-        } else if (task.notStarted === 'TRUE') {
-            setTaskStatus(notStarted);
-        } else if (task.inProgress === 'TRUE') {
-            setTaskStatus(inProgress);
-        } 
-        return taskStatus;
+    const handleCompleted = () => {
+        setCompleted(!completed);
+    }
+
+    const handleInProgress = () => {
+        setInProgress(!inProgress);
+    }
+
+    const handleNotStarted = () => {
+        setNotStarted(!notStarted);
     }
 
     const handleDelete = (task) => {
@@ -140,7 +141,7 @@ function EditTask() {
                                                     type="text"
                                                     fullWidth
                                                     variant="standard"
-                                                    value={editName}
+                                                    value={editTask.name}
                                                     // onChange={e => setNewTaskName(e.target.value)}
                                                     onChange={handleChange}
                                                 />
