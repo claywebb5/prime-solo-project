@@ -29,7 +29,7 @@ function NewTask() {
             }
         });
         setNewTask('');
-    //    { history.push('/welcome');}
+       { history.push('/welcome');}
     }
 
     // Open the new task form dialog

@@ -14,46 +14,45 @@ function EditTask() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-
-
     const tasksList = useSelector(store => store.tasksList);
 
+    const handleTaskEdit = (task) => {
+        console.log('Clicked Edit on:', task);
+        
+    }
 
-    function handleSubmit() {
-        alert(`LOL Can't do that yet`);
-        setNewInterpretation('');
+    const handleDelete = (task) => {
+        console.log('Clicked Delete on:', task);
+        
     }
 
     function handleReturn() {
         history.push('/welcome');
     }
+
     return (
         <>
 
             {tasksList.map(task => {
                 return (
                     <Card key={task.id}>
-                        <CardContent>
-                            <Typography gutterBottom variant="h6" component="h4">
-                                {task.name}
-                            </Typography>
-                        </CardContent>
+                        <Card className="taskContent">
+                            <CardContent>
+                                <Typography gutterBottom variant="h6" component="h4">
+                                    {task.name}
+                                </Typography>
+                                {/* </CardContent> */}
+                                <CardActions disableSpacing>
+                                    <Button size="small" color="primary" onClick={() => handleTaskEdit(task)}>
+                                        Edit
+                                    </Button>
 
-                        <CardActions disableSpacing>
-
-                            <Button size="small" color="primary" >
-                                New
-                            </Button>
-
-                            <Button size="small" color="primary" onClick={() => handleTaskEdit(task)}>
-                                Edit
-                            </Button>
-
-                            <Button size="small" color="secondary">
-                                Delete
-                            </Button>
-
-                        </CardActions>
+                                    <Button size="small" color="secondary" onClick={() => handleDelete(task)}>
+                                        Delete
+                                    </Button>
+                                </CardActions>
+                            </CardContent>
+                        </Card>
                     </Card>
                 );
             })}
