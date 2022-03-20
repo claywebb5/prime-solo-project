@@ -44,9 +44,11 @@ router.put('/', (req, res) => {
   const id = req.body.id;
   const name = req.body.name;
   const complete = req.body.complete;
+  const notStarted = req.body.notStarted;
+  const inProgress = req.body.inProgress;
   console.log('Task name is:', name);
-  const query =`UPDATE "tasks" SET name = $1, complete = $2 WHERE id = $3;`;
-  pool.query(query, [name, complete, id])
+  const query =`UPDATE "tasks" SET name = $1, complete = $2, notStarted = $3, inProgress = $4 WHERE id = $5;`;
+  pool.query(query, [name, complete, notStarted, inProgress, id])
     .then(result => {
       res.sendStatus(200);
     })

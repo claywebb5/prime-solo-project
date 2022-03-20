@@ -15,7 +15,7 @@ function* editTask(action) {
 }
 
 function* editTaskSaga() {
-    yield takeLatest('UPDATE_TASK', addTask);
+    yield takeLatest('UPDATE_TASK', editTask);
   }
 
 
