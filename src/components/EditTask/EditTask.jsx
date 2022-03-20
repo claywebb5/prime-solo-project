@@ -16,36 +16,62 @@ import DialogTitle from '@mui/material/DialogTitle';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 
 function EditTask() {
-
+    const tasksList = useSelector(store => store.tasksList);
     const history = useHistory();
     const dispatch = useDispatch();
 
+    let taskObj = {
+        id: tasksList.id,
+        name: tasksList.name,
+        complete: tasksList.complete,
+        notStarted: tasksList.notStarted,
+        inProgress: tasksList.inProgress
+    };
+
     // State of the form dialog
     const [open, setOpen] = useState(false);
-    const tasksList = useSelector(store => store.tasksList);
-    const [newTaskName, setNewTaskName] = useState();
+    const [editTask, setEditTask] = useState(taskObj);
+    const [taskStatus, setTaskStatus] = useState('');
+    const [editName, setEditName] = useState('');
+
+    const handleChange = (event) => {
+        setEditTask({...editTask, [event.target.name]: event.target.value})
+    };
 
     // ** THIS WILL HANDLE DISPATCH
     const handleTaskEdit = (task) => {
         console.log('Clicked Edit on:', task);
         handleClickOpen();
-        console.log('open?', open);
+        setEditName(task.name);
 
     }
     // Submit task
     const handleSubmit = () => {
         handleClose();
-        console.log('Still open??', open)
-    //     event.preventDefault();
-    //     console.log('newTask in handleSubmit is:', newTask);
-    //     dispatch({
-    //         type: 'ADD_TASK',
-    //         payload: {
-    //             name: newTask
-    //         }
-    //     });
-    //     setNewTask('');
-    //    { history.push('/welcome');}
+            event.preventDefault();
+        //     console.log('editTask in handleSubmit is:', newTask);
+        //     dispatch({
+        //         type: 'ADD_TASK',
+        //         payload: {
+        //             name: newTask
+        //         }
+        //     });
+        //     setNewTask('');
+        //    { history.push('/welcome');}
+    }
+
+    const handleTaskStatus = (task) => {
+        const completedReturn = 'Completed';
+        const notStarted = 'Not Started';
+        const inProgress = 'In Progress';
+        if (task.complete === 'TRUE') {
+            setTaskStatus(completedReturn);
+        } else if (task.notStarted === 'TRUE') {
+            setTaskStatus(notStarted);
+        } else if (task.inProgress === 'TRUE') {
+            setTaskStatus(inProgress);
+        } 
+        return taskStatus;
     }
 
     const handleDelete = (task) => {
@@ -78,6 +104,9 @@ function EditTask() {
                                 <Typography gutterBottom variant="h6" component="h4">
                                     {task.name}
                                 </Typography>
+                                <Typography gutterBottom variant="h6" component="h4">
+                                    Task Status: {taskStatus}
+                                </Typography>
                                 {/* </CardContent> */}
                                 <CardActions disableSpacing>
                                     <Button size="small" color="primary" onClick={() => handleTaskEdit(task)}>
@@ -88,7 +117,7 @@ function EditTask() {
                                         Delete
                                     </Button>
 
-                                    <Button size="small" color="primary" onClick={() => handleTaskEdit(task)}>
+                                    <Button size="small" color="primary" onClick={() => handleTaskStatus(task)}>
                                         <CheckBoxOutlineBlankIcon />
                                     </Button>
                                 </CardActions>
@@ -111,10 +140,14 @@ function EditTask() {
                                                     type="text"
                                                     fullWidth
                                                     variant="standard"
-                                                    value={task.name}
-                                                    onChange={e => setNewTask(e.target.value)}
-                                                // onChange={handleChange}
+                                                    value={editName}
+                                                    // onChange={e => setNewTaskName(e.target.value)}
+                                                    onChange={handleChange}
                                                 />
+                                            </div>
+                                            <div>
+                                                <DialogTitle>Task Status</DialogTitle>
+
                                             </div>
                                         </form>
                                     </DialogContent>
