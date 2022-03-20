@@ -41,8 +41,19 @@ router.post('/', (req, res) => {
 
 // ===================<(UPDATE) PUT AN UPDATE ON A TASK>=========================
 router.put('/', (req, res) => {
-  // req.body should contain a category_id to add to this favorite image
-  res.sendStatus(200);
+  const id = req.body.id;
+  const name = req.body.name;
+  const complete = req.body.complete;
+  console.log('Task name is:', name);
+  const query =`UPDATE "tasks" SET name = $1, complete = $2 WHERE id = $3;`;
+  pool.query(query, [name, complete, id])
+    .then(result => {
+      res.sendStatus(200);
+    })
+  .catch(err => {
+    console.log('Error editing a task in tasks.router:', err);
+    res.sendStatus(500);
+  })
 });
 
 
