@@ -28,39 +28,24 @@ function EditTask() {
         inProgress: task.inProgress
     };
 
-    // State of the form dialog
     const [open, setOpen] = useState(true);
     const [editTask, setEditTask] = useState(taskObj);
-    const [taskStatus, setTaskStatus] = useState('');
-    // const [editName, setEditName] = useState('');
     const [completed, setCompleted] = useState(false);
     const [notStarted, setNotStarted] = useState(false);
     const [inProgress, setInProgress] = useState(false);
 
 
     const handleChange = (event) => {
-        setEditTask({...editTask, [event.target.name]: event.target.value})
+        setEditTask({ ...editTask, [event.target.name]: event.target.value })
     };
 
-    // ** THIS WILL HANDLE DISPATCH
-    const handleTaskEdit = (task) => {
-        console.log('Clicked Edit on:', task);
-        handleClickOpen();
-
-    }
     // Submit task
-    const handleSubmit = () => {
-        handleClose();
-            event.preventDefault();
-        //     console.log('editTask in handleSubmit is:', newTask);
-        //     dispatch({
-        //         type: 'ADD_TASK',
-        //         payload: {
-        //             name: newTask
-        //         }
-        //     });
-        //     setNewTask('');
-        //    { history.push('/welcome');}
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        let editedTask = editTask;
+        editedTask = { ...editedTask, completed: completed, notStarted: notStarted, inProgress: inProgress };
+        console.log('New edits to task are:', editedTask);
+
     }
 
     const handleCompleted = () => {
@@ -88,6 +73,7 @@ function EditTask() {
     // ** Call this in the submit button function
     const handleClose = () => {
         setOpen(false);
+        history.push('/tasks')
     };
 
     function handleReturn() {
@@ -96,8 +82,8 @@ function EditTask() {
 
     return (
         <>
-                    <Card key={task.id}>
-                        {/* <Card className="taskContent">
+            <Card key={task.id}>
+                {/* <Card className="taskContent">
                             <CardContent>
                                 <Typography gutterBottom variant="h6" component="h4">
                                     {task.name}
@@ -106,7 +92,7 @@ function EditTask() {
                                     Task Status: {taskStatus}
                                 </Typography>
                                 {/* </CardContent> */}
-                                {/* <CardActions disableSpacing>
+                {/* <CardActions disableSpacing>
                                     <Button size="small" color="primary" onClick={() => handleTaskEdit(task)}>
                                         Edit
                                     </Button>
@@ -120,40 +106,38 @@ function EditTask() {
                                     </Button>
                                 </CardActions> */}
 
-                                <Dialog open={open} onClose={handleClose}>
-                                    <DialogTitle>Edit Task</DialogTitle>
-                                    <DialogContent>
-                                        <form onSubmit={handleSubmit}>
-                                            <div>
-                                                <TextField
-                                                    autoFocus
-                                                    margin="dense"
-                                                    id="name"
-                                                    label="Task Name"
-                                                    type="text"
-                                                    fullWidth
-                                                    variant="standard"
-                                                    value={editTask.name}
-                                                    // onChange={e => setNewTaskName(e.target.value)}
-                                                    onChange={handleChange}
-                                                />
-                                            </div>
-                                            <div>
-                                                <DialogTitle>Task Status</DialogTitle>
+                <Dialog open={open} onClose={handleClose}>
+                    <DialogTitle>Edit Task</DialogTitle>
+                    <DialogContent>
+                        <form onSubmit={handleSubmit}>
+                            <div>
+                                <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    id="name"
+                                    label="Task Name"
+                                    type="text"
+                                    fullWidth
+                                    variant="standard"
+                                    value={editTask.name}
+                                    // onChange={e => setNewTaskName(e.target.value)}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div>
+                                <DialogTitle>Task Status</DialogTitle>
 
-                                            </div>
-                                        </form>
-                                    </DialogContent>
-                                    <DialogActions>
-                                        <Button onClick={handleClose}>Cancel</Button>
-                                        <Button onClick={handleSubmit}>Submit</Button>
-                                    </DialogActions>
-                                </Dialog>
-                            {/* </CardContent>
+                            </div>
+                        </form>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Cancel</Button>
+                        <Button onClick={handleSubmit}>Submit</Button>
+                    </DialogActions>
+                </Dialog>
+                {/* </CardContent>
                         </Card> */}
-                    </Card>
-                );
-            })}
+            </Card>
             <Button variant="contained" onClick={handleReturn}>Home</Button>
 
         </>
