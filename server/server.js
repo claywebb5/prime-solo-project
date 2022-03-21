@@ -35,6 +35,9 @@ const prayerRouter = require('./routes/prayer.router.js');
 // Daily Tasks------
 const tasksRouter = require('./routes/tasks.router.js');
 
+// 12 Steps------
+const twelveStepsRouter = require('./routes/steps.router.js');
+
 // =====<BODY PARSER MIDDLEWARE>===============================================================================
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -81,6 +84,9 @@ app.use('/api/prayer', prayerRouter);
 
 // Tasks route----------------------------
 app.use('/api/tasks', tasksRouter);
+
+// Tasks route----------------------------
+app.use('/api/steps', twelveStepsRouter);
 
 
 // =====<SERVE STATIC FILES>====================================================================================

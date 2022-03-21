@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
 
 
 // ===================<(UPDATE) PUT AN UPDATE ON A TASK>=========================
-router.put('/', (req, res) => {
+router.put('/update', (req, res) => {
   const id = req.body.id;
   const name = req.body.name;
   const complete = req.body.complete;

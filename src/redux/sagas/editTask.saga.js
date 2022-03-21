@@ -7,7 +7,7 @@ import axios from 'axios';
 function* editTask(action) {
     try {
         console.log('action.payload is:', action.payload)
-        yield axios.put('/api/tasks', action.payload);
+        yield axios.put('/api/tasks/update', action.payload);
         yield put({ type: 'FETCH_TASKS' });
     } catch (error) {
         console.log('error editing a task', error);
