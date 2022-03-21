@@ -6,6 +6,7 @@ import allPrayersSaga from './allPrayers.saga';
 import fetchTasksSaga from './fetchTasks.saga';
 import addTaskSaga from './addTask.saga';
 import editTaskSaga from './editTask.saga';
+import stepsSaga from './steps.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     fetchTasksSaga(),
     addTaskSaga(),
     editTaskSaga(),
+    stepsSaga(),
   ]);
 }
