@@ -36,12 +36,16 @@ function EditTask() {
     };
 
     // Submit task
-    const handleSubmit = (event) => {
+    const handleSubmit = () => {
         event.preventDefault();
         let editedTask = editTask;
-        editedTask = { ...editedTask, completed: completed, notStarted: notStarted, inProgress: inProgress };
+        editedTask = { ...editedTask, complete: completed, notStarted: notStarted, inProgress: inProgress };
         console.log('New edits to task are:', editedTask);
-
+        dispatch({
+            type: 'UPDATE_TASK',
+            payload: editedTask
+        });
+        // history.push('/tasks');
     }
 
     const handleCompleted = () => {
