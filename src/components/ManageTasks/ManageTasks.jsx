@@ -69,11 +69,6 @@ function ManageTasks() {
                             </CardContent>
 
                             <CardActions disableSpacing>
-
-                                <Button size="small" color="primary" >
-                                    New
-                                </Button>
-
                                 <Button size="small" color="primary" onClick={() => handleTaskEdit(task.id)}>
                                     Edit
                                 </Button>
