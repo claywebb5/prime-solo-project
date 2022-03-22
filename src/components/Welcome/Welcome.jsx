@@ -73,6 +73,7 @@ function Welcome() {
                                 <Typography gutterBottom variant="h5" component="h1">
                                     <u>Daily Prayer</u>
                                 </Typography>
+
                                 <Button variant="contained" color="success">Manage Prayers</Button>
                                 <br />
         
@@ -129,22 +130,6 @@ function Welcome() {
                                     {task.name}
                                 </Typography>
                             </CardContent>
-
-                            <CardActions disableSpacing>
-
-                                <Button size="small" color="primary" >
-                                    New
-                                </Button>
-
-                                <Button size="small" color="primary" onClick={() => handleTaskEdit(task)}>
-                                    Edit
-                                </Button>
-
-                                <Button size="small" color="secondary">
-                                    Delete
-                                </Button>
-
-                            </CardActions>
                         </Card>
                     );
                 })}

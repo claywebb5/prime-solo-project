@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Button, FormControlLabel, Select } from "@material-ui/core";
+import { Button, FormControlLabel} from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -30,7 +30,6 @@ function EditTask() {
     const [notStarted, setNotStarted] = useState(false);
     const [inProgress, setInProgress] = useState(false);
 
-
     const handleChange = (event) => {
         setEditTask({ ...editTask, name: event.target.value })
     };
@@ -40,52 +39,34 @@ function EditTask() {
         event.preventDefault();
         let editedTask = editTask;
         editedTask = { ...editedTask, complete: completed, notStarted: notStarted, inProgress: inProgress };
-        // editedTask = { ...editedTask};
         console.log('New edits to task are:', editedTask);
         dispatch({
             type: 'UPDATE_TASK',
             payload: editedTask
         });
         history.push('/tasks');
-    }
+    };
 
     const handleCompleted = () => {
         setCompleted(!completed);
         console.log('In handleCompleted:', completed);
-        
     }
 
     const handleInProgress = () => {
         setInProgress(!inProgress);
         console.log('In handleInProgress:', inProgress);
-
     }
 
     const handleNotStarted = () => {
         setNotStarted(!notStarted);
         console.log('In handleNotStarted:', notStarted);
-
     }
-
-    const handleDelete = (task) => {
-        console.log('Clicked Delete on:', task);
-    }
-
-    // Open the new task form dialog
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
 
     // Close the new task form dialog
-    // ** Call this in the submit button function
     const handleClose = () => {
         setOpen(false);
         history.push('/tasks')
     };
-
-    function handleReturn() {
-        history.push('/welcome');
-    }
 
     return (
         <>
@@ -124,7 +105,6 @@ function EditTask() {
                     </DialogActions>
                 </Dialog>
             </Card>
-            <Button variant="contained" onClick={handleReturn}>Home</Button>
         </>
     )
 }

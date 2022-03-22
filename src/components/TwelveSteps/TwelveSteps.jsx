@@ -10,6 +10,8 @@ import { Button } from "@material-ui/core";
 import { Container } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
 
 
 
@@ -33,15 +35,24 @@ function TwelveSteps() {
                         {stepsList.map(steps => {
                             return (
                                 <Card key={steps.id}>
-                                    <Typography gutterBottom variant="h5" component="h2">
-                                        {steps.step}
-                                    </Typography>
-                                    <Typography variant="body2" color="textPrimary" component="p">
-                                        "{steps.step_context}"
-                                    </Typography>
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="h2">
+                                            {steps.step}
+                                        </Typography>
+                                        <Typography variant="body2" color="textPrimary" component="p">
+                                            "{steps.step_context}"
+                                        </Typography>
+                                    </CardContent>
+
+                                    <CardActions disableSpacing>
+                                        <Button size="small" color="primary" onClick={() => handleStepEdit(steps.id)}>
+                                            Edit
+                                        </Button>
+                                    </CardActions>
+
                                     <br />
                                 </Card>
-                                
+
                             );
                         })}
                     </section>

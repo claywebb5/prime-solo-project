@@ -12,10 +12,12 @@ import Card from "@material-ui/core/Card";
 
 function ManageTasks() {
 
+    useEffect(() => {
+        dispatch({ type: 'FETCH_TASKS' });
+    }, [dispatch]);
+
     const dispatch = useDispatch();
     const history = useHistory();
-
-
     const tasksList = useSelector(store => store.tasksList);
 
     const handleTaskEdit = (id) => {
@@ -60,21 +62,18 @@ function ManageTasks() {
         });
     }
 
-
-    useEffect(() => {
-        dispatch({ type: 'FETCH_TASKS' });
-      }, [dispatch]);
+    
 
 
     return (
         <>
-        <Container>
-            <Card>
-                <NewTask />
-            </Card>
-        </Container>
+            <Container>
+                <Card>
+                    <NewTask />
+                </Card>
+            </Container>
 
-        <Container>
+            <Container>
                 <Typography gutterBottom variant="h5" component="h1">
                     <u>Daily Tasks and Reminders</u>
                 </Typography>
@@ -86,6 +85,10 @@ function ManageTasks() {
                                 <Typography gutterBottom variant="h6" component="h4">
                                     {task.name}
                                 </Typography>
+                                {/* <Typography gutterBottom variant="h6" component="h4">
+                                    * TASK STATUS *
+                                </Typography> */}
+
                             </CardContent>
 
                             <CardActions disableSpacing>
