@@ -39,7 +39,9 @@ function TwelveSteps() {
                                     <Typography variant="body2" color="textPrimary" component="p">
                                         "{steps.step_context}"
                                     </Typography>
+                                    <br />
                                 </Card>
+                                
                             );
                         })}
                     </section>
