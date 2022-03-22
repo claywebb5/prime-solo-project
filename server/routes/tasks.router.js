@@ -26,10 +26,10 @@ router.post('/', (req, res) => {
 
   // RETURNING "id" will give us back the id of the created task
   const insertTaskQuery = `
-  INSERT INTO "tasks" ("name", "complete", "notStarted", "inProgress")
-  VALUES ($1, $2, $3, $4);`;
+  INSERT INTO "tasks" ("name")
+  VALUES ($1);`;
   // FIRST QUERY MAKES TASK
-  pool.query(insertTaskQuery, [req.body.name, req.body.complete, req.body.notStarted, req.body.inProgress])
+  pool.query(insertTaskQuery, [req.body.name])
     .then(() => res.sendStatus(201))
     .catch(err => {
         // catch for second query

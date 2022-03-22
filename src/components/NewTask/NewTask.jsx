@@ -16,7 +16,10 @@ function NewTask() {
 
     // State of the form dialog
     const [open, setOpen] = useState(false);
+
     const [newTask, setNewTask] = useState('');
+
+    
 
     // Submit task
     const handleSubmit = () => {
@@ -55,9 +58,7 @@ function NewTask() {
                         <DialogContentText>
                             To create a new task, please enter the name of the task here.
                         </DialogContentText>
-                        <form
-                            onSubmit={handleSubmit}
-                        >
+                        <form onSubmit={handleSubmit}>
                             <div>
                                 <TextField
                                     autoFocus

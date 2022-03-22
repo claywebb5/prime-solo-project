@@ -92,9 +92,9 @@ function EditTask() {
                             <div>
                                 <DialogTitle>Task Status: <br />{task.complete}</DialogTitle>
                                 <FormGroup>
-                                    <FormControlLabel control={<Checkbox />} label="completed" onClick={handleCompleted} value={editTask.complete} />
-                                    <FormControlLabel control={<Checkbox />} label="inProgress" onClick={handleInProgress} value={editTask.inProgress} />
-                                    <FormControlLabel control={<Checkbox />} label="notStarted" onClick={handleNotStarted} value={editTask.notStarted} />
+                                    <FormControlLabel control={<Checkbox />} label="Completed" onClick={handleCompleted} value={editTask.complete} />
+                                    <FormControlLabel control={<Checkbox />} label="In Progress" onClick={handleInProgress} value={editTask.inProgress} />
+                                    <FormControlLabel control={<Checkbox />} label="Not Started" onClick={handleNotStarted} value={editTask.notStarted} />
                                 </FormGroup>
                             </div>
                         </form>

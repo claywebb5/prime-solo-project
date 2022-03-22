@@ -17,13 +17,20 @@ import CardContent from "@material-ui/core/CardContent";
 
 function TwelveSteps() {
 
-    const dispatch = useDispatch();
-    const stepsList = useSelector(store => store.stepsReducer)
-
     useEffect(() => {
         dispatch({ type: 'FETCH_STEPS' });
     }, []);
 
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const stepsList = useSelector(store => store.stepsReducer)
+
+    
+
+    const handleStepEdit = (id) => {
+        console.log('Handle Edit of:', id);
+        
+    }
 
 
     return (
