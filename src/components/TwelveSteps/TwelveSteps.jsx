@@ -32,11 +32,14 @@ function TwelveSteps() {
                     <section className="steps">
                         {stepsList.map(steps => {
                             return (
-                                <div key={steps.id}>
-                                    <li>{steps.step}</li>
-                                    <li>{steps.step_context}</li>
-
-                                </div>
+                                <Card key={steps.id}>
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                        {steps.step}
+                                    </Typography>
+                                    <Typography variant="body2" color="textPrimary" component="p">
+                                        "{steps.step_context}"
+                                    </Typography>
+                                </Card>
                             );
                         })}
                     </section>
