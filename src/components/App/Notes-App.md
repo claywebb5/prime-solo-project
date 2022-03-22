@@ -1,1 +1,0 @@
-## ====<App.jsx>=====< WILL ONLY HOLD THE COMPONENTS AND THEIR ROUTES >============== 

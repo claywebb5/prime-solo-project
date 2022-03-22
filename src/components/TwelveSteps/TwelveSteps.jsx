@@ -1,213 +1,89 @@
 // ========================<INTERACTIVE 12 STEP PROGRAM>====================
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './TwelveSteps.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import { Button } from "@material-ui/core";
+import { Container } from "@material-ui/core";
+import Card from "@material-ui/core/Card";
+import Typography from "@material-ui/core/Typography";
+
+
 
 function TwelveSteps() {
+
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+
+    const [steps, setSteps] = useState([]);
+
+    const stepsList = useSelector(store => store.allStepsReducer)
+
+    const handleClickOpen = () => {
+        setSteps(stepsList);
+    };
+
     return (
         <>
-            <div className="container">
-                <p>Interactive Twelve Step Program</p>
-            </div>
+            <Container>
+                <Typography gutterBottom variant="h5" component="h1">
+                    <u>Interactive Twelve Step Program</u>
+                </Typography>
+                <br />
+                <Button variant="outlined" onClick={handleClickOpen}>
+                    See Steps?
+                </Button>
+                <section className="steps">
+                    {steps.map(theStep => {
+                        return (
+                            <div key={theStep.id}>
 
-            {/* ============<START INTERACTIVE TWELVE STEP PROGRAM FORM>============= */}
-            
-            {/* =============<FIRST STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>First Step</h3>
+                                {/* ============<START INTERACTIVE TWELVE STEP PROGRAM FORM>============= */}
+                                <h3>First Step</h3>
+                                <p>{theStep.first_step}</p>
 
-                    <p>*Actual step goes here*</p>
+                                <h3>Second Step</h3>
+                                <p>{theStep.second_step}</p>
 
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
+                                <h3>Third Step</h3>
+                                <p>{theStep.third_step}</p>
 
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
+                                <h3>Fourth Step</h3>
+                                <p>{theStep.fourth_step}</p>
 
-                {/* =============<SECOND STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>Second Step</h3>
-                    <p>*Actual step goes here*</p>
+                                <h3>Fifth Step</h3>
+                                <p>{theStep.fifth_step}</p>
 
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
+                                <h3>Sixth Step</h3>
+                                <p>{theStep.sixth_step}</p>
 
-                {/* =============<THIRD STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>Third Step</h3>
-                    <p>*Actual step goes here*</p>
+                                <h3>Seventh Step</h3>
+                                <p>{theStep.seventh_step}</p>
 
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
+                                <h3>Eighth Step</h3>
+                                <p>{theStep.eighth_step}</p>
 
-                {/* =============<FOURTH STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>Fourth Step</h3>
-                    <p>*Actual step goes here*</p>
+                                <h3>Ninth Step</h3>
+                                <p>{theStep.ninth_step}</p>
 
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
+                                <h3>Tenth Step</h3>
+                                <p>{theStep.tenth_step}</p>
 
-                {/* =============FIFTH STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>Fifth Step</h3>
-                    <p>*Actual step goes here*</p>
+                                <h3>Eleventh Step</h3>
+                                <p>{theStep.eleventh_step}</p>
 
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
+                                <h3>Twelfth Step</h3>
+                                <p>{theStep.twelfth_step}</p>
 
-                {/* =============<SIXTH STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>Sixth Step</h3>
-                    <p>*Actual step goes here*</p>
-
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
-
-                {/* =============<SEVENTH STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>Seventh Step</h3>
-                    <p>*Actual step goes here*</p>
-
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
-
-                {/* =============<EIGHTH STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>Eighth Step</h3>
-                    <p>*Actual step goes here*</p>
-
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
-
-                {/* =============<NINTH STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>Ninth Step</h3>
-                    <p>*Actual step goes here*</p>
-
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
-
-                {/* =============<TENTH STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>Tenth Step</h3>
-                    <p>*Actual step goes here*</p>
-
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
-
-                {/* =============<ELEVENTH STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>Eleventh Step</h3>
-                    <p>*Actual step goes here*</p>
-
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
-
-                {/* =============<TWELFTH STEP>================ */}
-            <Box component="form">
-                <div>
-                    <h3>Twelfth Step</h3>
-                    <p>*Actual step goes here*</p>
-
-                    <TextField
-                        // onChange={onTextChange}
-                        // value={textValue}
-                        label={"What you've done"} //optional
-                    />
-                    <Button >Submit</Button>
-                    <Button >Reset</Button>
-                </div>
-            </Box>
-            {/* --------------<END INTERACTIVE TWELVE STEP PROGRAM FORM>--------------------- */}
+                                {/* --------------<END INTERACTIVE TWELVE STEP PROGRAM FORM>--------------------- */}
+                            </div>
+                        );
+                    })}
+                </section>
+            </Container>
         </>
     );
 }
