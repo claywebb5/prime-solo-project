@@ -16,14 +16,12 @@ router.get('/', (req, res) => {
       console.log('ERROR: Get all tasks', err);
       res.sendStatus(500)
     })
-
 });
 
 // ===================<(CREATE) POST NEW TASK>=========================
 router.post('/', (req, res) => {
   console.log(req.body);
   console.log(req.body.name);
-
   // RETURNING "id" will give us back the id of the created task
   const insertTaskQuery = `
   INSERT INTO "tasks" ("name")
@@ -38,7 +36,6 @@ router.post('/', (req, res) => {
     });
 });
 
-
 // ===================<(UPDATE) PUT AN UPDATE ON A TASK>=========================
 router.put(`/update/:id`, (req, res) => {
   const id = req.body.id;
@@ -50,8 +47,6 @@ router.put(`/update/:id`, (req, res) => {
   console.log('req.params', req.params)
   const query =`UPDATE "tasks" SET "name" = $1, complete = $2, "notStarted" = $3, "inProgress" = $4 WHERE id = ${req.params.id};`;
   pool.query(query, [name, complete, notStarted, inProgress])
-  // pool.query(query)
-
     .then(result => {
       res.sendStatus(200);
     })
@@ -60,8 +55,6 @@ router.put(`/update/:id`, (req, res) => {
     res.sendStatus(500);
   })
 });
-
-
 
 // ===================<(DELETE) DELETE A TASK>=========================
 router.delete(`/delete/:id`, (req, res) => {
