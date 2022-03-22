@@ -14,9 +14,20 @@ function* editTask(action) {
     }    
 }
 
+function* deleteTask(action) {
+    try {
+        console.log('action.payload in delete is:', action.payload)
+        yield axios.delete(`/api/tasks/delete/${action.payload.id}`, action.payload);
+        yield put({ type: 'FETCH_TASKS' });
+    } catch (error) {
+        console.log('error deleting a task', error);
+    }    
+}
+
 function* editTaskSaga() {
     yield takeLatest('UPDATE_TASK', editTask);
-  }
+    yield takeLatest('DELETE_TASK', deleteTask);
+}
 
 
 export default editTaskSaga;

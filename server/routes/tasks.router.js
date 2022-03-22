@@ -64,11 +64,11 @@ router.put(`/update/:id`, (req, res) => {
 
 
 // ===================<(DELETE) DELETE A TASK>=========================
-router.delete('/', (req, res) => {
+router.delete(`/delete/:id`, (req, res) => {
   let id = req.params.id;
   console.log('The task id is:', id);
-  const query =`DELETE FROM "tasks" WHERE id = $1;`;
-  pool.query(query, [id])
+  const query =`DELETE FROM "tasks" WHERE id = ${req.params.id};`;
+  pool.query(query)
     .then(result => {
       res.sendStatus(200);
     })

@@ -40,6 +40,26 @@ function ManageTasks() {
         history.push('/edit-task'); // **NEEDS TO BE CREATED**
     }
 
+    const handleTaskDelete = (id) => {
+        console.log('Handle Delete of:', id);
+        let taskToDelete;
+        for (let task of tasksList) {
+            if (task.id === id) {
+                taskToDelete = {
+                    id: task.id,
+                    name: task.name,
+                    complete: task.complete,
+                    notStarted: task.notStarted,
+                    inProgress: task.inProgress
+                }
+            }
+        }
+        dispatch({
+            type: 'DELETE_TASK',
+            payload: taskToDelete
+        });
+    }
+
 
     useEffect(() => {
         dispatch({ type: 'FETCH_TASKS' });
@@ -73,7 +93,7 @@ function ManageTasks() {
                                     Edit
                                 </Button>
 
-                                <Button size="small" color="secondary">
+                                <Button size="small" color="secondary" onClick={() => handleTaskDelete(task.id)}>
                                     Delete
                                 </Button>
 
