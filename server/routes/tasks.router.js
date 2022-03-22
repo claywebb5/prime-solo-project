@@ -26,10 +26,10 @@ router.post('/', (req, res) => {
 
   // RETURNING "id" will give us back the id of the created task
   const insertTaskQuery = `
-  INSERT INTO "tasks" ("name")
-  VALUES ($1);`;
+  INSERT INTO "tasks" ("name", "complete", "notStarted", "inProgress")
+  VALUES ($1, $2, $3, $4);`;
   // FIRST QUERY MAKES TASK
-  pool.query(insertTaskQuery, [req.body.name])
+  pool.query(insertTaskQuery, [req.body.name, req.body.complete, req.body.notStarted, req.body.inProgress])
     .then(() => res.sendStatus(201))
     .catch(err => {
         // catch for second query
@@ -40,15 +40,18 @@ router.post('/', (req, res) => {
 
 
 // ===================<(UPDATE) PUT AN UPDATE ON A TASK>=========================
-router.put('/update', (req, res) => {
+router.put(`/update/:id`, (req, res) => {
   const id = req.body.id;
   const name = req.body.name;
   const complete = req.body.complete;
   const notStarted = req.body.notStarted;
   const inProgress = req.body.inProgress;
-  console.log('Task name is:', name);
-  const query =`UPDATE "tasks" SET name = $1, complete = $2, notStarted = $3, inProgress = $4 WHERE id = $5;`;
-  pool.query(query, [name, complete, notStarted, inProgress, id])
+  console.log('Task is:', name, complete, notStarted, inProgress);
+  console.log('req.params', req.params)
+  const query =`UPDATE "tasks" SET "name" = $1, complete = $2, "notStarted" = $3, "inProgress" = $4 WHERE id = ${req.params.id};`;
+  pool.query(query, [name, complete, notStarted, inProgress])
+  // pool.query(query)
+
     .then(result => {
       res.sendStatus(200);
     })

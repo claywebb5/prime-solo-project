@@ -32,7 +32,7 @@ function EditTask() {
 
 
     const handleChange = (event) => {
-        setEditTask({ ...editTask, [event.target.name]: event.target.value })
+        setEditTask({ ...editTask, name: event.target.value })
     };
 
     // Submit task
@@ -40,6 +40,7 @@ function EditTask() {
         event.preventDefault();
         let editedTask = editTask;
         editedTask = { ...editedTask, complete: completed, notStarted: notStarted, inProgress: inProgress };
+        // editedTask = { ...editedTask};
         console.log('New edits to task are:', editedTask);
         dispatch({
             type: 'UPDATE_TASK',
