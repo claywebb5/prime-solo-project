@@ -15,7 +15,7 @@ function* fetchSteps() {
 }
 
 function* stepsSaga() {
-  yield takeEvery('FETCH_STEPS', fetchSteps);
+  yield takeLatest('FETCH_STEPS', fetchSteps);
 }
 
 export default stepsSaga;

@@ -7,7 +7,7 @@ const router = express.Router();
 
 // =================<(READ) GET ALL STEPS>=========================
 router.get('/', (req, res) => {
-    const query = `SELECT * FROM twelve_steps ORDER BY "id" ASC`;
+    const query = `SELECT * FROM twelve_steps;`;
     pool.query(query)
       .then( result => {
         res.send(result.rows);

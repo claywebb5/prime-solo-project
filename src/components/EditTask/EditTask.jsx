@@ -46,7 +46,7 @@ function EditTask() {
             type: 'UPDATE_TASK',
             payload: editedTask
         });
-        // history.push('/tasks');
+        history.push('/tasks');
     }
 
     const handleCompleted = () => {
