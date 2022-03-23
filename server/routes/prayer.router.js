@@ -29,4 +29,21 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     });
 });
 
+
+// ===================<(UPDATE) PUT NEW PRAYER INTERPRETATION>=========================
+router.put('/:id', (req, res) => {
+    console.log(req.body.interpretation);
+    const interp = req.body.interpretation;
+    const insertQuery = `UPDATE "prayer" SET "interpretation" = $1 WHERE id = ${req.params.id};`;
+    pool.query(insertQuery, [interp])
+    .then(result => {
+        res.sendStatus(200);
+    })
+    .catch(err => {
+        console.log('Error editing a prayer:', err);
+        res.sendStatus(500);
+    })
+});
+
+
 module.exports = router;
