@@ -91,7 +91,7 @@ function ManageTasks() {
                                 <Typography gutterBottom variant="h6" component="h4">
                                     {task.name}
                                 </Typography>
-                                <Typography gutterBottom variant="h6" component="h4">
+                                <Typography gutterBottom component="subtitle1">
                                     Status: Not Started
                                 </Typography>
                             </CardContent>
@@ -121,7 +121,7 @@ function ManageTasks() {
                                 <Typography gutterBottom variant="h6" component="h4">
                                     {task.name}
                                 </Typography>
-                                <Typography gutterBottom variant="h6" component="h4">
+                                <Typography gutterBottom component="subtitle1">
                                     Status: In Progress
                                 </Typography>
                             </CardContent>
@@ -151,7 +151,7 @@ function ManageTasks() {
                                 <Typography gutterBottom variant="h6" component="h4">
                                     {task.name}
                                 </Typography>
-                                <Typography gutterBottom variant="h6" component="h4">
+                                <Typography gutterBottom component="subtitle1">
                                     Status: Completed
                                 </Typography>
                             </CardContent>

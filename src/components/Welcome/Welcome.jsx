@@ -24,7 +24,6 @@ function Welcome() {
 
 
     useEffect(() => {
-        // fetchDailyPrayer();
         dispatch({ type: 'FETCH_ALL_PRAYERS' })
         dispatch({ type: 'FETCH_TASKS' })
     }, [])
@@ -37,23 +36,22 @@ function Welcome() {
             payload: prayer
         })
         history.push('/prayer-edit');
-    }
+    };
 
     function handleNew() {
         console.log('Clicked New Task');
-
         history.push('/tasks');
-    }
+    };
 
-    function handleTaskEdit(task) {
-        console.log('Handle Edit of:', task.name);
-        // alert(`Are you sure you want to edit: ${prayer.prayer_name}?`);
-        // dispatch({
-        //     type: 'SELECTED_PRAYER',
-        // payload: prayer
-        // })
-        history.push('/task-edit'); // **NEEDS TO BE CREATED**
-    }
+    // function handleTaskEdit(task) {
+    //     console.log('Handle Edit of:', task.name);
+    //     // alert(`Are you sure you want to edit: ${prayer.prayer_name}?`);
+    //     // dispatch({
+    //     //     type: 'SELECTED_PRAYER',
+    //     // payload: prayer
+    //     // })
+    //     history.push('/task-edit'); // **NEEDS TO BE CREATED**
+    // }
 
     return (
         <>

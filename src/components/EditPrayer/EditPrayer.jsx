@@ -14,70 +14,67 @@ function EditPrayer() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    // const [open, setOpen] = useState(false);
-    const [newInterpretation, setNewInterpretation] = useState('');
-    // const [oldInterpretation, setOldInterpretation] = useState('');
-
     const prayer = useSelector(store => store.selectedPrayer)
 
-    // const previous = () => {
-    //     setOpen(!open);
-    //     setOldInterpretation(prayer.interpretation);
-    // }
+    let prayerObj = {
+        id: prayer.id,
+        prayer_name: prayer.prayer_name,
+        prayer_text: prayer.prayer_text,
+        interpretation: prayer.interpretation
+    };
+
+    const [editPrayer, setEditPrayer] = useState(prayerObj)
 
     const handleChange = (event) => {
-        // setNewInterpretation({...})
+        setEditPrayer({...editPrayer, interpretation: event.target.value})
+    };
 
-    }
-
-    // const handleClose = () => {
-    //     if (open === true) {
-    //         setOpen(!open);
-    //     } else {
-    //         console.log('Nope');
-    //         console.log('Open is:', open);
-    //     }
-    // }
-
-    function handleSubmit() {
-        
-    }
+    const handleSubmit = () => {
+        event.preventDefault();
+        let editedPrayer = editPrayer;
+        editedPrayer = {...editedPrayer};
+        console.log('New edits to prayer are:', editedPrayer);
+        dispatch({
+            type: 'UPDATE_PRAYER',
+            payload: editedPrayer
+        });
+        history.push('/welcome');
+    };
 
     function handleReturn() {
         history.push('/welcome');
     }
+
     return (
         <>
             <Container>
-                <h1>Prayer Edit</h1>
-                <div key={prayer.id}>
-                    <h3>{prayer.prayer_name}</h3>
-                    <h4>"{prayer.prayer_text}"</h4>
+                <Card style={{ backgroundImage: "linear-gradient(to top, #fddb92 0%, #d1fdff 100%)" }}>
+                    <h1>Prayer Edit</h1>
+                    <div key={prayer.id}>
+                        <h3>{prayer.prayer_name}</h3>
+                        <h4>"{prayer.prayer_text}"</h4>
 
-                    <p>Interpretation:</p>
-                    <input
-                        value={newInterpretation}
-                        onChange={handleChange}
-                    />
-                    <button onClick={handleSubmit}>Submit</button>
-                </div>
+                        {/* <p>Interpretation:</p> */}
+                        <form onSubmit={handleSubmit}>
+                            <input
+                                placeholder='Interpretation'
+                                value={editPrayer.interpretation}
+                                onChange={handleChange}
+                            />
+                        </form>
+                            <button onClick={handleSubmit}>Submit</button>
+                            {/* <button onClick={() => handleSubmit}>Submit</button> */}
+                    </div>
+                </Card>
             </Container>
-            {/* <Container>
-                <Button variant="contained" onClick={previous}>See Previous</Button>
-            </Container>
-            <Card open={open}>
-                {oldInterpretation}
-                <CardActions>
-                    <Button onClick={handleClose}>Close</Button>
-                </CardActions>
-            </Card> */}
+            <br />
 
             <Container>
                 <Button variant="contained" onClick={handleReturn}>Home</Button>
             </Container>
             {/* <h1>** ADD TO FAVORITE LIST OF PRAYERS **</h1> */}
         </>
-    )
+    );
 }
 
 export default EditPrayer;
