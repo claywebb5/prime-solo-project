@@ -7,6 +7,9 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  /* background-image: radial-gradient(circle, rgb(49, 144, 228) 0%, rgb(29, 84, 166) 100%); */
+  background-image: linear-gradient(to right, #2c3e50, #4ca1af);
+  height: 100vh;
 }
 
 img {
