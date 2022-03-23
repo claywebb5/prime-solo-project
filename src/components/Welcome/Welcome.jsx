@@ -22,6 +22,7 @@ function Welcome() {
     const prayerList = useSelector(store => store.allPrayersReducer);
     const tasksList = useSelector(store => store.tasksList);
 
+
     useEffect(() => {
         // fetchDailyPrayer();
         dispatch({ type: 'FETCH_ALL_PRAYERS' })
@@ -121,12 +122,12 @@ function Welcome() {
                     Manage Tasks
                 </Button>
                 <br />
-                {tasksList.map(task => {
+                {tasksList.filter(task => task.inProgress === true).map(filteredTask => {
                     return (
-                        <Card key={task.id}>
+                        <Card key={filteredTask.id}>
                             <CardContent>
                                 <Typography gutterBottom variant="h6" component="h4">
-                                    {task.name}
+                                    {filteredTask.name}
                                 </Typography>
                             </CardContent>
                         </Card>
