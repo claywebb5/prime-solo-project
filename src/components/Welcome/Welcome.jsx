@@ -68,7 +68,7 @@ function Welcome() {
 
                 {prayerList.map(prayer => {
                     return (
-                        <Card key={prayer.id}>
+                        <Card key={prayer.id} style={{backgroundImage: "linear-gradient(to top, #fddb92 0%, #d1fdff 100%)"}}>
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h1">
                                     <u>Daily Prayer</u>
@@ -109,11 +109,10 @@ function Welcome() {
                     );
                 })}
             </Container>
-
-            {/* --------------<END DAILY PRAYER CARD>--------------------- */}
+            {/* -------<END DAILY PRAYER CARD>--------- */}
             <br />
-            {/* ============<START DAILY TASKS/REMINDERS>============= */}
 
+            {/* ============<START DAILY TASKS/REMINDERS>============= */}
             <Container>
                 <Typography gutterBottom variant="h5" component="h1">
                     <u>Daily Tasks and Reminders</u>
@@ -124,10 +123,13 @@ function Welcome() {
                 <br />
                 {tasksList.filter(task => task.inProgress === true).map(filteredTask => {
                     return (
-                        <Card key={filteredTask.id}>
+                        <Card key={filteredTask.id} style={{ backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)"}}>
                             <CardContent>
                                 <Typography gutterBottom variant="h6" component="h4">
                                     {filteredTask.name}
+                                </Typography>
+                                <Typography gutterBottom component="subtitle1">
+                                    Status: In Progress
                                 </Typography>
                             </CardContent>
                         </Card>
