@@ -60,17 +60,6 @@ function AboutPage() {
 
       <Card>
         <CardContent>
-          <Typography variant="h4">
-
-          </Typography>
-          <Typography variant="h6">
-
-          </Typography>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             Related Information
           </Typography>
@@ -106,12 +95,6 @@ function AboutPage() {
           </Button>
           <Button size="small" color="secondary">
             Contact
-          </Button>
-          <Button size="small" color="secondary">
-            
-          </Button>
-          <Button size="small" color="secondary">
-            
           </Button>
         </CardActions>
       </Card>
