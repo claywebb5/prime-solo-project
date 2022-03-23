@@ -66,7 +66,7 @@ function Welcome() {
 
                 {prayerList.map(prayer => {
                     return (
-                        <Card key={prayer.id} style={{backgroundImage: "linear-gradient(to top, #fddb92 0%, #d1fdff 100%)"}}>
+                        <Card key={prayer.id} style={{ backgroundImage: "linear-gradient(to top, #fddb92 0%, #d1fdff 100%)" }}>
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h1">
                                     <u>Daily Prayer</u>
@@ -74,7 +74,7 @@ function Welcome() {
 
                                 <Button variant="contained" color="success">Manage Prayers</Button>
                                 <br />
-        
+
                                 <Typography gutterBottom variant="h5" component="h2">
                                     {prayer.prayer_name}
                                 </Typography>
@@ -97,11 +97,6 @@ function Welcome() {
                                 <Button size="small" color="primary" onClick={() => handleEdit(prayer)}>
                                     Edit
                                 </Button>
-
-                                <Button size="small" color="secondary">
-                                    Delete
-                                </Button>
-
                             </CardActions>
                         </Card>
                     );
@@ -119,9 +114,11 @@ function Welcome() {
                     Manage Tasks
                 </Button>
                 <br />
+
                 {tasksList.filter(task => task.inProgress === true).map(filteredTask => {
+
                     return (
-                        <Card key={filteredTask.id} style={{ backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)"}}>
+                        <Card key={filteredTask.id} style={{ backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)" }}>
                             <CardContent>
                                 <Typography gutterBottom variant="h6" component="h4">
                                     {filteredTask.name}
