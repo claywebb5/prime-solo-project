@@ -1,4 +1,4 @@
-// ========================<THIS IS THE MAP VIEW>====================
+// ========================<THIS IS THE MAP VIEW>================================
 import React, { Component } from 'react';
 // To use the google maps JS API with react
 import GoogleMap from 'google-map-react';
@@ -11,11 +11,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Map.css';
 
-//=======<IMPORTS>=================================
+//====================<IMPORTS>=================================
 
-//---<STYLING>------------------------
+//------------<STYLING>-----------------------------
 const mapStyles = {
-    width: '50%',
+    width: '100%',
     height: '50vh'
 }
 const markerStyle = {
@@ -151,7 +151,7 @@ class MapView extends Component {
                     return newState;
                 });
                 // Trigger a location update event
-                axios.post("http://localhost:3128/update-location", {
+                axios.post("http://localhost:5000/update-location", {
                     username: this.state.current_user,
                     location: location
                 }).then(res => {
@@ -200,7 +200,6 @@ class MapView extends Component {
         return (
             <div style={mapStyles}>
                 <GoogleMap
-                    // style={mapStyles}
                     // Enter in your API key
                     bootstrapURLKeys={{ key: 'AIzaSyCm4Rm_ufmh4QQpWaohfbJLXSsbPTwDurQ' }}
                     center={this.state.center}

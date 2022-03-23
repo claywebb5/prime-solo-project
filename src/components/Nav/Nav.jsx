@@ -39,11 +39,6 @@ function Nav() {
               12 Steps
             </Link>
 
-            {/* <THIS WILL BE THE BIG BOOK LITERATURE> */}
-            <Link className="navLink" to="/literature">
-              Literature
-            </Link>
-
             {/* <THIS WILL BE THE MAP> */}
             <Link className="navLink" to="/map">
               Map

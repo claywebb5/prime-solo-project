@@ -8,7 +8,6 @@ import Footer from '../Footer/Footer'; // Footer
 import AboutPage from '../AboutPage/AboutPage'; // "About" - Info Page
 import Welcome from '../Welcome/Welcome'; // "Home" - Daily Prayer & Tasks
 import UserPage from '../UserPage/UserPage'; // "Profile" - User info
-import Literature from '../Literature/Literature'; // "Literature" - Big Book
 import MapView from '../Map/Map'; // "Map" - The Map
 import TwelveSteps from '../TwelveSteps/TwelveSteps'; // "12 Steps"
 import LandingPage from '../LandingPage/LandingPage'; // "Register" - Register View
@@ -99,14 +98,6 @@ function App() {
             path="/steps"
           >
             <TwelveSteps />
-          </ProtectedRoute>
-
-          {/* ========<LITERATURE>=================== */}
-          <ProtectedRoute
-            exact
-            path="/literature"
-          >
-            <Literature />
           </ProtectedRoute>
 
           {/* ========<MAP>=================== */}

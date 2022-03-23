@@ -7,12 +7,13 @@ import { Button } from "@material-ui/core";
 function DailyTasks() {
 
     const history = useHistory();
-
     const tasksList = useSelector(store => store.tasksList);
 
     function handleReturn(){
         history.push('/welcome');
+
     }
+    
     return (
         <>
             <h1>Current Tasks</h1>
