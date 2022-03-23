@@ -9,7 +9,6 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import PrayerList from '../PrayerList/PrayerList';
 import { useHistory } from 'react-router-dom';
 
 
@@ -64,15 +63,12 @@ function Welcome() {
                                     {prayer.prayer_name}
                                 </Typography>
 
-                                {/* <PrayerList /> */}
-
                                 <Typography variant="body2" color="textPrimary" component="p">
                                     "{prayer.prayer_text}"
                                 </Typography>
                                 <br />
                                 <i>Reflect on the following prayer and please enter your interpretation:</i>
                                 <Typography variant="body2" color="textPrimary" component="p">
-                                    {/* <i>Reflect on the following prayer and please enter your interpretation:</i> */}
                                     <br />
                                     {prayer.interpretation}
                                 </Typography>

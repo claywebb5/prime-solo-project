@@ -58,7 +58,6 @@ function ManagePrayers() {
                                 <br />
                                 <i>Reflect on the following prayer and please enter your interpretation:</i>
                                 <Typography variant="body2" color="textPrimary" component="p">
-                                    {/* <i>Reflect on the following prayer and please enter your interpretation:</i> */}
                                     <br />
                                     {prayer.interpretation}
                                 </Typography>
