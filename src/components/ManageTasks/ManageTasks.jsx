@@ -72,8 +72,8 @@ function ManageTasks() {
             </Typography>
 
             {/* ==========================<NEW TASK BUTTON>================================ */}
-            <Container>
-                <Card>
+            <Container >
+                <Card style={{backgroundColor: "#9e9e9e"}}>
                     <NewTask />
                 </Card>
             </Container>
