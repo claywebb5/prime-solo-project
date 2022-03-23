@@ -15,8 +15,21 @@ function* fetchAllPrayers() {
     }
 }
 
+// Generator Function
+// *** UPDATE ***
+function* editPrayer(action) {
+    try {
+        console.log('action.payload is:', action.payload.id);
+        yield axios.put(`/api/prayer/${action.payload.id}`, action.payload);
+        yield put({type: 'FETCH_ALL_PRAYERS'});
+    } catch (error) {
+        console.log('Error adding interpretation in saga:', error);        
+    }
+}
+
 function* allPrayersSaga() {
   yield takeEvery('FETCH_ALL_PRAYERS', fetchAllPrayers);
+  yield takeLatest('UPDATE_PRAYER', editPrayer);
 }
 
 export default allPrayersSaga;
