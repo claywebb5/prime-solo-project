@@ -14,7 +14,7 @@ function EditPrayer() {
     const prayer = useSelector(store => store.selectedPrayer)
 
    function handleSubmit() {
-       alert(`LOL Can't do that yet`);
+       alert(`Can't do that yet`);
        setNewInterpretation('');
    }
 

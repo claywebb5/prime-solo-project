@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import EditTask from "../EditTask/EditTask";
 import NewTask from "../NewTask/NewTask";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -39,7 +38,7 @@ function ManageTasks() {
             payload: taskToEdit
         });
 
-        history.push('/edit-task'); // **NEEDS TO BE CREATED**
+        history.push('/edit-task');
     }
 
     const handleTaskDelete = (id) => {
