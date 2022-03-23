@@ -114,22 +114,21 @@ function Welcome() {
                     Manage Tasks
                 </Button>
                 <br />
-
-                {tasksList.filter(task => task.inProgress === true).map(filteredTask => {
-
-                    return (
-                        <Card key={filteredTask.id} style={{ backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)" }}>
-                            <CardContent>
-                                <Typography gutterBottom variant="h6" component="h4">
-                                    {filteredTask.name}
-                                </Typography>
-                                <Typography gutterBottom component="subtitle1">
-                                    Status: In Progress
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    );
-                })}
+                
+                    {tasksList.filter(task => task.inProgress === true).map(filteredTask => {
+                        return (
+                            <Card key={filteredTask.id} style={{ backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)" }}>
+                                <CardContent>
+                                    <Typography gutterBottom variant="h6" component="h4">
+                                        {filteredTask.name}
+                                    </Typography>
+                                    <Typography gutterBottom component="subtitle1">
+                                        Status: In Progress
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        );
+                    })}
             </Container>
             {/* --------------<END DAILY TASKS/REMINDERS>--------------------- */}
         </>
