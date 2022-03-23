@@ -16,8 +16,8 @@ import RegisterPage from '../RegisterPage/RegisterPage'; // "Register" - Hosts t
 import EditPrayer from '../EditPrayer/EditPrayer'; // "EDIT BUTTON" - Edit the specific Daily Prayer from Welcome View
 import ManageTasks from '../ManageTasks/ManageTasks'; // "MANAGE TASKS BUTTON" - Manage all tasks
 import EditTask from "../EditTask/EditTask";
+import ManagePrayers from '../ManagePrayers/ManagePrayers';
 
-// "MANAGE PRAYERS BUTTON" - Manage all prayers
 
 
 function App() {
@@ -72,6 +72,15 @@ function App() {
             path="/prayer-edit"
           >
             <EditPrayer />
+          </ProtectedRoute>
+
+          {/* ========<MANAGE PRAYERS VIEW>=================== */}
+          <ProtectedRoute
+            // logged in shows WELCOME VIEW else shows LoginPage
+            exact
+            path="/prayers"
+          >
+            <ManagePrayers />
           </ProtectedRoute>
 
           {/* ========<MANAGE TASKS VIEW>=================== */}

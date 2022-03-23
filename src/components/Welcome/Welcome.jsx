@@ -28,30 +28,15 @@ function Welcome() {
         dispatch({ type: 'FETCH_TASKS' })
     }, [])
 
-    function handleEdit(prayer) {
-        console.log('Handle Edit of:', prayer.prayer_name);
-        // alert(`Are you sure you want to edit: ${prayer.prayer_name}?`);
-        dispatch({
-            type: 'SELECTED_PRAYER',
-            payload: prayer
-        })
-        history.push('/prayer-edit');
+    function handleManagePrayers() {
+        console.log('Clicked Manage Prayers');
+        history.push('/prayers');
     };
 
-    function handleNew() {
-        console.log('Clicked New Task');
+    function handleManageTasks() {
+        console.log('Clicked Manage Tasks');
         history.push('/tasks');
     };
-
-    // function handleTaskEdit(task) {
-    //     console.log('Handle Edit of:', task.name);
-    //     // alert(`Are you sure you want to edit: ${prayer.prayer_name}?`);
-    //     // dispatch({
-    //     //     type: 'SELECTED_PRAYER',
-    //     // payload: prayer
-    //     // })
-    //     history.push('/task-edit'); // **NEEDS TO BE CREATED**
-    // }
 
     return (
         <>
@@ -63,16 +48,16 @@ function Welcome() {
             {/* ============<START DAILY PRAYER CARD>============= */}
 
             <Container>
-
+                <Card>
+                    <Typography gutterBottom variant="h5" component="h1">
+                        <u>Daily Prayer</u>
+                    </Typography>
+                    <Button variant="contained" color="success" onClick={handleManagePrayers}>Manage Prayers</Button>
+                </Card>
                 {prayerList.map(prayer => {
                     return (
                         <Card key={prayer.id} style={{ backgroundImage: "linear-gradient(to top, #fddb92 0%, #d1fdff 100%)" }}>
                             <CardContent>
-                                <Typography gutterBottom variant="h5" component="h1">
-                                    <u>Daily Prayer</u>
-                                </Typography>
-
-                                <Button variant="contained" color="success">Manage Prayers</Button>
                                 <br />
 
                                 <Typography gutterBottom variant="h5" component="h2">
@@ -107,28 +92,28 @@ function Welcome() {
 
             {/* ============<START DAILY TASKS/REMINDERS>============= */}
             <Container>
-                <Typography gutterBottom variant="h5" component="h1">
-                    <u>Daily Tasks and Reminders</u>
-                </Typography>
-                <Button variant="contained" color="success" onClick={handleNew}>
+                <Card>
+                    <Typography gutterBottom variant="h5" component="h1">
+                        <u>Daily Tasks and Reminders</u>
+                    </Typography>
+                <Button variant="contained" color="success" onClick={handleManageTasks}>
                     Manage Tasks
                 </Button>
-                <br />
-                
-                    {tasksList.filter(task => task.inProgress === true).map(filteredTask => {
-                        return (
-                            <Card key={filteredTask.id} style={{ backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)" }}>
-                                <CardContent>
-                                    <Typography gutterBottom variant="h6" component="h4">
-                                        {filteredTask.name}
-                                    </Typography>
-                                    <Typography gutterBottom component="subtitle1">
-                                        Status: In Progress
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        );
-                    })}
+                </Card>
+                {tasksList.filter(task => task.inProgress === true).map(filteredTask => {
+                    return (
+                        <Card key={filteredTask.id} style={{ backgroundImage: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)" }}>
+                            <CardContent>
+                                <Typography gutterBottom variant="h6" component="h4">
+                                    {filteredTask.name}
+                                </Typography>
+                                <Typography gutterBottom component="subtitle1">
+                                    Status: In Progress
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    );
+                })}
             </Container>
             {/* --------------<END DAILY TASKS/REMINDERS>--------------------- */}
         </>
