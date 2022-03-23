@@ -6,6 +6,7 @@ import selectedPrayer from './selectedPrayer.reducer';
 import tasksList from './tasks.reducer';
 import editTaskReducer from './editTask.reducer';
 import stepsReducer from './steps.reducer';
+import editPrayerReducer from './editPrayer.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   selectedPrayer,
   tasksList,
   editTaskReducer,
-  stepsReducer
+  stepsReducer,
+  editPrayerReducer
 });
 
 export default rootReducer;
