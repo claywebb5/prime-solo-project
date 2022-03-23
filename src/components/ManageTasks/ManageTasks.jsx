@@ -19,6 +19,8 @@ function ManageTasks() {
     const history = useHistory();
     const tasksList = useSelector(store => store.tasksList);
 
+
+    {/* ============<TASK EDIT BUTTON CLICK LISTENER>============= */}
     const handleTaskEdit = (id) => {
         console.log('Handle Edit of:', id);
         let taskToEdit;
@@ -37,10 +39,10 @@ function ManageTasks() {
             type: 'SET_EDIT_TASK',
             payload: taskToEdit
         });
-
         history.push('/edit-task');
-    }
+    };
 
+    {/* ============<TASK DELETE BUTTON CLICK LISTENER>============= */}
     const handleTaskDelete = (id) => {
         console.log('Handle Delete of:', id);
         let taskToDelete;
@@ -59,46 +61,108 @@ function ManageTasks() {
             type: 'DELETE_TASK',
             payload: taskToDelete
         });
-    }
-
-    
+    };
 
 
     return (
         <>
+            {/* ============<PAGE TITLE>============= */}
+            <Typography gutterBottom variant="h5" component="h1">
+                <u>Daily Tasks and Reminders</u>
+            </Typography>
+
+            {/* ==========================<NEW TASK BUTTON>================================ */}
             <Container>
                 <Card>
                     <NewTask />
                 </Card>
             </Container>
+            <br />
 
+            {/* =========================<NOT STARTED TASKS>============================== */}
             <Container>
                 <Typography gutterBottom variant="h5" component="h1">
-                    <u>Daily Tasks and Reminders</u>
+                    <u>Not Started</u>
                 </Typography>
-                <br />
-                {tasksList.map(task => {
+                {tasksList.filter(task => task.notStarted === true || (task.complete === false && task.inProgress === false)).map(task => {
                     return (
-                        <Card key={task.id}>
+                        <Card key={task.id} style={{backgroundColor: "#ff8a80"}}>
                             <CardContent>
                                 <Typography gutterBottom variant="h6" component="h4">
                                     {task.name}
                                 </Typography>
-                                {/* <Typography gutterBottom variant="h6" component="h4">
-                                    * TASK STATUS *
-                                </Typography> */}
-
+                                <Typography gutterBottom variant="h6" component="h4">
+                                    Status: Not Started
+                                </Typography>
                             </CardContent>
 
                             <CardActions disableSpacing>
                                 <Button size="small" color="primary" onClick={() => handleTaskEdit(task.id)}>
                                     Edit
                                 </Button>
-
                                 <Button size="small" color="secondary" onClick={() => handleTaskDelete(task.id)}>
                                     Delete
                                 </Button>
+                            </CardActions>
+                        </Card>
+                    );
+                })}
+            </Container>
 
+            {/* =========================<IN PROGRESS TASKS>======================================== */}
+            <Container>
+                <Typography gutterBottom variant="h5" component="h1">
+                    <u>In Progress</u>
+                </Typography>
+                {tasksList.filter(task => task.inProgress === true).map(task => {
+                    return (
+                        <Card key={task.id} style={{backgroundColor: "#9cffff"}}>
+                            <CardContent>
+                                <Typography gutterBottom variant="h6" component="h4">
+                                    {task.name}
+                                </Typography>
+                                <Typography gutterBottom variant="h6" component="h4">
+                                    Status: In Progress
+                                </Typography>
+                            </CardContent>
+
+                            <CardActions disableSpacing>
+                                <Button size="small" color="primary" onClick={() => handleTaskEdit(task.id)}>
+                                    Edit
+                                </Button>
+                                <Button size="small" color="secondary" onClick={() => handleTaskDelete(task.id)}>
+                                    Delete
+                                </Button>
+                            </CardActions>
+                        </Card>
+                    );
+                })}
+            </Container>
+
+            {/* =============================<COMPLETED TASKS>================================= */}
+            <Container>
+                <Typography gutterBottom variant="h5" component="h1">
+                    <u>Completed</u>
+                </Typography>
+                {tasksList.filter(task => task.complete === true).map(task => {
+                    return (
+                        <Card key={task.id} style={{backgroundColor: "#6fbf73"}}>
+                            <CardContent>
+                                <Typography gutterBottom variant="h6" component="h4">
+                                    {task.name}
+                                </Typography>
+                                <Typography gutterBottom variant="h6" component="h4">
+                                    Status: Completed
+                                </Typography>
+                            </CardContent>
+
+                            <CardActions disableSpacing>
+                                <Button size="small" color="primary" onClick={() => handleTaskEdit(task.id)}>
+                                    Edit
+                                </Button>
+                                <Button size="small" color="secondary" onClick={() => handleTaskDelete(task.id)}>
+                                    Delete
+                                </Button>
                             </CardActions>
                         </Card>
                     );
@@ -109,3 +173,4 @@ function ManageTasks() {
 }
 
 export default ManageTasks;
+
