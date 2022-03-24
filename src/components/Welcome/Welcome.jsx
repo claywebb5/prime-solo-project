@@ -1,7 +1,7 @@
 // ========================<THIS IS THE WELCOME VIEW>====================
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './Welcome.css';
 import { Container } from '@material-ui/core';
 import Card from "@material-ui/core/Card";
@@ -9,7 +9,6 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { useHistory } from 'react-router-dom';
 
 
 function Welcome() {
@@ -39,10 +38,28 @@ function Welcome() {
         history.push('/tasks');
     };
 
-    function handleRandomPrayer() {
+    const handleRandomEdit = (id) => {
         console.log('Random Prayer:', randomPrayer);
+        let prayerToEdit;
+        for (let thePrayer of randomPrayer) {
+            if (thePrayer.id === id) {
+                prayerToEdit = {
+                    id: thePrayer.id,
+                    prayer_name: thePrayer.prayer_name,
+                    prayer_text: thePrayer.prayer_text,
+                    interpretation: thePrayer.interpretation,
+                    user_id: user.id
+                }
+            }
+        }
+        dispatch({
+            type: 'SET_EDIT_PRAYER',
+            payload: prayerToEdit
+        });
         
     }
+
+
     return (
         <>
             <div className="container">
@@ -60,13 +77,8 @@ function Welcome() {
                     <Button variant="contained" color="success" onClick={handleManagePrayers}>Manage Prayers</Button>
                 </Card>
                 <Card key={randomPrayer.id}>
-                    <Typography gutterBottom variant="h5" component="h1">
-                        <u>Random Prayer</u>
-                    </Typography>
-                    <Button variant="contained" color="success" onClick={handleRandomPrayer}>Random Prayer</Button>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            {/* {[randomPrayer]} */}
                             {randomPrayer.prayer_name}
                         </Typography>
 
@@ -80,6 +92,11 @@ function Welcome() {
                             {randomPrayer.interpretation}
                         </Typography>
                     </CardContent>
+                    <CardActions disableSpacing>
+                                <Button size="small" color="primary" onClick={() => handleRandomEdit(randomPrayer)}>
+                                    Edit
+                                </Button>
+                            </CardActions>
                 </Card>
                 {prayerList.map(prayer => {
                     return (
