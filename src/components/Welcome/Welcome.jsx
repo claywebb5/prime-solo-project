@@ -21,6 +21,8 @@ function Welcome() {
     const prayerList = useSelector(store => store.allPrayersReducer);
     const tasksList = useSelector(store => store.tasksList);
 
+    const randomPrayer = prayerList[Math.floor(Math.random() * prayerList.length)];
+
 
     useEffect(() => {
         dispatch({ type: 'FETCH_ALL_PRAYERS' })
@@ -37,6 +39,10 @@ function Welcome() {
         history.push('/tasks');
     };
 
+    function handleRandomPrayer() {
+        console.log('Random Prayer:', randomPrayer);
+        
+    }
     return (
         <>
             <div className="container">
@@ -52,6 +58,28 @@ function Welcome() {
                         <u>Daily Prayer</u>
                     </Typography>
                     <Button variant="contained" color="success" onClick={handleManagePrayers}>Manage Prayers</Button>
+                </Card>
+                <Card key={randomPrayer.id}>
+                    <Typography gutterBottom variant="h5" component="h1">
+                        <u>Random Prayer</u>
+                    </Typography>
+                    <Button variant="contained" color="success" onClick={handleRandomPrayer}>Random Prayer</Button>
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {/* {[randomPrayer]} */}
+                            {randomPrayer.prayer_name}
+                        </Typography>
+
+                        <Typography variant="body2" color="textPrimary" component="p">
+                            "{randomPrayer.prayer_text}"
+                        </Typography>
+                        <br />
+                        <i>Reflect on the following prayer and please enter your interpretation:</i>
+                        <Typography variant="body2" color="textPrimary" component="p">
+                            <br />
+                            {randomPrayer.interpretation}
+                        </Typography>
+                    </CardContent>
                 </Card>
                 {prayerList.map(prayer => {
                     return (
@@ -92,9 +120,9 @@ function Welcome() {
                     <Typography gutterBottom variant="h5" component="h1">
                         <u>Daily Tasks and Reminders</u>
                     </Typography>
-                <Button variant="contained" color="success" onClick={handleManageTasks}>
-                    Manage Tasks
-                </Button>
+                    <Button variant="contained" color="success" onClick={handleManageTasks}>
+                        Manage Tasks
+                    </Button>
                 </Card>
                 {tasksList.filter(task => task.inProgress === true).map(filteredTask => {
                     return (
