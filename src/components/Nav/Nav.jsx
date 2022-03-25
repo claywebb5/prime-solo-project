@@ -45,9 +45,9 @@ function Nav() {
             </Link>
 
             {/* <USER PAGE & LOG OUT BUTTON COMPONENTS> */}
-            <Link className="navLink" to="/user">
+            {/* <Link className="navLink" to="/user">
               Profile
-            </Link>
+            </Link> */}
 
           </>
         )}
