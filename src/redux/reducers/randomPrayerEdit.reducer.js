@@ -1,4 +1,4 @@
-const randomPrayerReducer = (state = [], action) => {
+const randomPrayerReducer = (state = {}, action) => {
     switch (action.type) {
       case 'SET_EDIT_PRAYER':
           return action.payload

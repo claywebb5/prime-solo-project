@@ -17,6 +17,7 @@ import EditPrayer from '../EditPrayer/EditPrayer'; // "EDIT BUTTON" - Edit the s
 import ManageTasks from '../ManageTasks/ManageTasks'; // "MANAGE TASKS BUTTON" - Manage all tasks
 import EditTask from "../EditTask/EditTask";
 import ManagePrayers from '../ManagePrayers/ManagePrayers';
+// import RandomPrayer from '../RandomPrayer/RandomPrayer';
 
 
 
@@ -82,6 +83,15 @@ function App() {
           >
             <ManagePrayers />
           </ProtectedRoute>
+
+          {/* ========<RANDOM PRAYER EDIT VIEW>=================== */}
+          {/* <ProtectedRoute
+            // logged in shows WELCOME VIEW else shows LoginPage
+            exact
+            path="/edit-random-prayer"
+          >
+            <RandomPrayer />
+          </ProtectedRoute> */}
 
           {/* ========<MANAGE TASKS VIEW>=================== */}
           <ProtectedRoute

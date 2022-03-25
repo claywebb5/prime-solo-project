@@ -1,6 +1,8 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Footer.css';
+import { Container } from "@material-ui/core";
+
 
 
 
@@ -8,11 +10,13 @@ function Footer() {
 
   return (
     <>
-      {/* <WILL DISPLAY THE COPYRIGHT FOR PRIME> */}
-      <footer> &copy; Prime Digital Academy</footer>
+      <Container className="theFooter">
+        {/* <WILL DISPLAY THE COPYRIGHT FOR PRIME> */}
+        <footer> &copy; Webb Information Services Inc.</footer>
 
-      {/* <WILL DISPLAY THE LOG OUT BUTTON> */}
-      <LogOutButton className="navLink" />
+        {/* <WILL DISPLAY THE LOG OUT BUTTON> */}
+        <LogOutButton className="navLink" />
+      </Container>
     </>
   );
 }

@@ -8,7 +8,12 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
   /* background-image: radial-gradient(circle, rgb(49, 144, 228) 0%, rgb(29, 84, 166) 100%); */
-  background-image: linear-gradient(to right, #2c3e50, #4ca1af);
+  /* background-image: linear-gradient(to right, #2c3e50, #4ca1af); */
+  background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
 }
 

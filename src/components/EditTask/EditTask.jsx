@@ -78,6 +78,7 @@ function EditTask() {
                             <div>
                                 <TextField
                                     autoFocus
+                                    rows="4"
                                     margin="dense"
                                     id="name"
                                     label="Task Name"

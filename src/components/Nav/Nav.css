@@ -1,19 +1,24 @@
 .nav {
   /* flex box layout */
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   margin: 0 0 30px;
   background-color: #3977c3;
   overflow: hidden;
+  width: 100%;
+  /* position: fixed; */
 }
 
 .nav a {
   text-decoration: none;
 }
 
-.nav-title {
-  font-size: 24px;
+.navTitle {
+  align-items: baseline;
+  float: left;
+  display: flex;
+  font-size: 20px;
   font-weight: 700;
   color: #f2f2f2;
   padding-left: 10px;
@@ -21,11 +26,11 @@
 }
 
 .navLink {
-  display: inline-block;
+  display: inline-flex;
   color: #f2f2f2;
   background-color: #3977c3;
   text-align: center;
-  padding: 24px 10px;
+  padding: 20px 5px;
   text-decoration: none;
   font-size: 15px;
 
@@ -36,6 +41,6 @@
   outline: 0;
 }
 
-.navLink:hover {
+/* .navLink:hover {
   background-color: #008183;
-}
+} */

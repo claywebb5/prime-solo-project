@@ -8,8 +8,9 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   return (
     <div className="container">
-      <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      {/* <h2>Welcome, {user.username}!</h2>
+      <p>Your ID is: {user.id}</p> */}
+      <h1>Uh Oh! There must've been an error in the WIFI! Page not rendering, try again tomorrow..</h1>
       <LogOutButton className="btn" />
     </div>
   );

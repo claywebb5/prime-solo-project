@@ -37,7 +37,7 @@ function ManagePrayers() {
     return (
         <>
             <Container>
-                <Card>
+                <Card style={{backgroundImage: "linear-gradient(to right, #d7d2cc 0%, #304352 100%)"}}>
                     <Typography gutterBottom variant="h5" component="h1">
                         <u>Daily Prayer</u>
                     </Typography>

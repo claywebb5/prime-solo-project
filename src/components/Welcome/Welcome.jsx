@@ -1,5 +1,5 @@
 // ========================<THIS IS THE WELCOME VIEW>====================
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Welcome.css';
@@ -15,12 +15,15 @@ function Welcome() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const [randPrayer, setRandPrayer] = useState('');
     const user = useSelector((store) => store.user);
     const prayerList = useSelector(store => store.allPrayersReducer);
     const tasksList = useSelector(store => store.tasksList);
 
-    const randomPrayer = prayerList[Math.floor(Math.random() * prayerList.length)];
+
+    const randomPrayerId = Math.floor(Math.random() * 15);
+
+    const random = (prayerList[randomPrayerId]);
 
 
     useEffect(() => {
@@ -38,25 +41,10 @@ function Welcome() {
         history.push('/tasks');
     };
 
-    const handleRandomEdit = (id) => {
-        console.log('Random Prayer:', randomPrayer);
-        let prayerToEdit;
-        for (let thePrayer of randomPrayer) {
-            if (thePrayer.id === id) {
-                prayerToEdit = {
-                    id: thePrayer.id,
-                    prayer_name: thePrayer.prayer_name,
-                    prayer_text: thePrayer.prayer_text,
-                    interpretation: thePrayer.interpretation,
-                    user_id: user.id
-                }
-            }
-        }
-        dispatch({
-            type: 'SET_EDIT_PRAYER',
-            payload: prayerToEdit
-        });
-        
+    const handleRandomEdit = () => {
+        console.log('Random is:', random);
+        console.log('Random object is:', random.id, random.prayer_name);
+        setRandPrayer(random);
     }
 
 
@@ -64,76 +52,45 @@ function Welcome() {
         <>
             <div className="container">
                 <h2>Welcome, {user.username}!</h2>
-                {/* <p>Your ID is: {user.id}</p> */}
             </div>
 
             {/* ============<START DAILY PRAYER CARD>============= */}
 
             <Container>
-                <Card>
+                <Card style={{ backgroundImage: "linear-gradient(to right, #d7d2cc 0%, #304352 100%)" }}>
                     <Typography gutterBottom variant="h5" component="h1">
                         <u>Daily Prayer</u>
                     </Typography>
                     <Button variant="contained" color="success" onClick={handleManagePrayers}>Manage Prayers</Button>
+                    <Button variant="contained" color="success" onClick={handleRandomEdit}>Random Prayer</Button>
                 </Card>
-                <Card key={randomPrayer.id}>
+
+                <Card style={{ backgroundImage: "linear-gradient(to top, #fddb92 0%, #d1fdff 100%)" }}>
                     <CardContent>
+                        <br />
+
                         <Typography gutterBottom variant="h5" component="h2">
-                            {randomPrayer.prayer_name}
+                            {random?.prayer_name}
                         </Typography>
 
                         <Typography variant="body2" color="textPrimary" component="p">
-                            "{randomPrayer.prayer_text}"
+                            "{random?.prayer_text}"
                         </Typography>
                         <br />
                         <i>Reflect on the following prayer and please enter your interpretation:</i>
                         <Typography variant="body2" color="textPrimary" component="p">
                             <br />
-                            {randomPrayer.interpretation}
+                            {random?.interpretation}
                         </Typography>
                     </CardContent>
-                    <CardActions disableSpacing>
-                                <Button size="small" color="primary" onClick={() => handleRandomEdit(randomPrayer)}>
-                                    Edit
-                                </Button>
-                            </CardActions>
                 </Card>
-                {prayerList.map(prayer => {
-                    return (
-                        <Card key={prayer.id} style={{ backgroundImage: "linear-gradient(to top, #fddb92 0%, #d1fdff 100%)" }}>
-                            <CardContent>
-                                <br />
-
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    {prayer.prayer_name}
-                                </Typography>
-
-                                <Typography variant="body2" color="textPrimary" component="p">
-                                    "{prayer.prayer_text}"
-                                </Typography>
-                                <br />
-                                <i>Reflect on the following prayer and please enter your interpretation:</i>
-                                <Typography variant="body2" color="textPrimary" component="p">
-                                    <br />
-                                    {prayer.interpretation}
-                                </Typography>
-                            </CardContent>
-
-                            <CardActions disableSpacing>
-                                <Button size="small" color="primary" onClick={() => handleEdit(prayer)}>
-                                    Edit
-                                </Button>
-                            </CardActions>
-                        </Card>
-                    );
-                })}
             </Container>
             {/* -------<END DAILY PRAYER CARD>--------- */}
             <br />
 
             {/* ============<START DAILY TASKS/REMINDERS>============= */}
             <Container>
-                <Card>
+                <Card style={{ backgroundImage: "linear-gradient(to right, #d7d2cc 0%, #304352 100%)" }}>
                     <Typography gutterBottom variant="h5" component="h1">
                         <u>Daily Tasks and Reminders</u>
                     </Typography>

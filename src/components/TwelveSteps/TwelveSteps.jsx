@@ -41,7 +41,7 @@ function TwelveSteps() {
                     <section className="steps">
                         {stepsList.map(steps => {
                             return (
-                                <Card key={steps.id}>
+                                <Card key={steps.id} style={{ backgroundImage: "linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%)" }}>
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="h2">
                                             {steps.step}

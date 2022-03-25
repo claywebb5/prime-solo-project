@@ -1,5 +1,15 @@
 footer {
   margin-top: 80px;
-  padding: 20px;
+  padding: 5px;
   text-align: center;
+  position: right;
+  /* display: inline-flex; */
 }
+
+.theFooter {
+  padding: 5px;
+}
+
+/* .navLink {
+  position: left;
+} */

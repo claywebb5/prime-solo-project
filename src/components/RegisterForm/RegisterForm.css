@@ -1,0 +1,9 @@
+.container {
+    display: inline;
+    width: 100%;
+    overflow: none;
+}
+
+.formPanel {
+    overflow: none;
+}

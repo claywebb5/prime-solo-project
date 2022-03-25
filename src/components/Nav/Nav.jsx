@@ -10,8 +10,8 @@ function Nav() {
     <div className="nav">
 
       {/* <ON LOGIN / REGISTER VIEW - WHEN CLICKED BRINGS USER TO LANDING PAGE> */}
-      <Link to="/home">
-        <h2 className="nav-title">Hey Bill W.</h2>
+      <Link className="navTitle" to="/home">
+        Hey Bill W.
       </Link>
       {/* ---------------------------------------------------------- */}
 
