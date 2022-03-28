@@ -32,7 +32,7 @@ function NewTask() {
             }
         });
         setNewTask('');
-        { history.push('/welcome'); }
+        { history.push('/tasks'); }
     }
 
     // Open the new task form dialog
