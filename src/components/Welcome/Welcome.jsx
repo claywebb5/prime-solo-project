@@ -25,28 +25,31 @@ function Welcome() {
 
     const random = (prayerList[randomPrayerId]);
 
-
+    //  ============<ON PAGE LOAD>=============
     useEffect(() => {
         dispatch({ type: 'FETCH_ALL_PRAYERS' })
         dispatch({ type: 'FETCH_TASKS' })
     }, [])
 
+    //  ============<CLICK LISTENER FOR MANAGE PRAYERS>=============
     function handleManagePrayers() {
         console.log('Clicked Manage Prayers');
         history.push('/prayers');
     };
 
-    function handleManageTasks() {
-        console.log('Clicked Manage Tasks');
-        history.push('/tasks');
-    };
-
+    //  ============<CLICK LISTENER FOR RANDOM PRAYER>=============
     const handleRandomEdit = () => {
         console.log('Random is:', random);
         console.log('Random object is:', random.id, random.prayer_name);
         setRandPrayer(random);
     }
 
+    //  ============<CLICK LISTENER FOR MANAGE TASKS>=============
+    function handleManageTasks() {
+        console.log('Clicked Manage Tasks');
+        history.push('/tasks');
+    };
+    
 
     return (
         <>
