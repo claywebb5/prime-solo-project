@@ -12,8 +12,8 @@ function Footer() {
     <>
       <Container className="theFooter">
         {/* <WILL DISPLAY THE COPYRIGHT FOR PRIME> */}
-        <footer> &copy; Webb Information Services Inc.</footer>
-
+        {/* <footer> &copy; Webb Information Services Inc.</footer> */}
+        <br />
         {/* <WILL DISPLAY THE LOG OUT BUTTON> */}
         <LogOutButton className="navLink" />
       </Container>

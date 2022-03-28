@@ -53,7 +53,7 @@ function TwelveSteps() {
 
                                     <CardActions disableSpacing>
                                         <Button size="small" color="primary" onClick={() => handleStepEdit(steps.id)}>
-                                            Edit
+                                            Reflection
                                         </Button>
                                     </CardActions>
 
