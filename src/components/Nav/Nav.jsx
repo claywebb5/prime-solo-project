@@ -1,10 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
-import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+// ---------< MUI IMPORTS >----------------
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import Avatar from '@mui/material/Avatar';
+import { styled } from '@mui/material/styles';
+
+
 
 function Nav() {
+  // ========< TOOLS >==============
+  const history = useHistory();
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+
+  // =====< USESTATE >=============================
+  // For the hamburger icon menu
+  const [anchorElMenu, setAnchorElMenu] = useState(null);
+  // =====< CLICK LISTENERS >=============================
+  // OPEN the hamburger icon menu
+  const handleOpenMenu = (event) => {
+    setAnchorElMenu(event.currentTarget);
+  };
+  // CLOSE the hamburger icon menu
+  const handleCloseMenu = () => {
+    setAnchorElMenu(null);
+  };
+  // GO Home
+  const handleHome = () => {
+    history.push("/welcome")
+  };
+  // GO to 12 Steps
+  const handleSteps = () => {
+    history.push("/steps")
+  };
+  // GO to Map
+  const handleMap = () => {
+    history.push("/map")
+  };
+  // GO to About
+  const handleAbout = () => {
+    history.push("/about")
+  };
+  
 
   return (
     <div className="nav">
@@ -32,7 +79,7 @@ function Nav() {
             <Link className="navLink" to="/welcome">
               Home
             </Link>
-            
+
             {/* <THIS WILL BE THE INTERACTIVE 12 STEP PROGRAM> */}
             {/* <USED TO BE THE LINK FOR INFO> */}
             <Link className="navLink" to="/steps">
