@@ -1,6 +1,6 @@
 // *** THIS WILL HOLD  ***
 
-import {put, takeLatest} from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 
@@ -13,12 +13,12 @@ function* addTask(action) {
         yield put({ type: 'FETCH_TASKS' });
     } catch (error) {
         console.log('error posting a new task', error);
-    }    
+    }
 }
 
 function* addTaskSaga() {
     yield takeLatest('ADD_TASK', addTask);
-  }
+}
 
 
 export default addTaskSaga;
