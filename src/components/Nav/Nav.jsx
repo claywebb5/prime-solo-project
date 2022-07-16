@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Nav.css';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import billwLogo from './billwLogo.png';
 // ---------< MUI IMPORTS >----------------
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -64,11 +65,11 @@ function Nav() {
 
     return (
         <>
-            {/* <AppBar position="fixed" sx={{ marginBottom: 1 }}> */}
-            <AppBar sx={{ marginBottom: 1 }}>
+            <AppBar position="fixed" sx={{ marginBottom: 1, flexDirection: 'row'  }}>
+            {/* <AppBar sx={{ marginBottom: 1 }}> */}
 
                 {/* ------< HAMBURGER ICON >--------------- */}
-                <Box sx={{ flexGrow: 1 }}>
+                <Box sx={{ flexGrow: 1}}>
                     <IconButton
                         size="large"
                         edge="start"
@@ -122,7 +123,7 @@ function Nav() {
                         onClick={handleHome}
                         sx={{ mr: 2 }}
                     >
-
+                        <Avatar alt="billwLogo" src={billwLogo} variant="square" />
                     </IconButton>
                 </Box>
             </AppBar>
