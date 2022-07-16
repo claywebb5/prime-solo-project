@@ -4,6 +4,7 @@ import './Nav.css';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import billwLogo from './billwLogo.png';
+import UserNav from './UserNav';
 // ---------< MUI IMPORTS >----------------
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -83,95 +84,7 @@ function Nav() {
 
     return (
         <>
-            <AppBar position="fixed" sx={{ marginBottom: 1, flexDirection: 'row' }}>
-                {/* <AppBar sx={{ marginBottom: 1 }}> */}
-
-                {/* ------< HAMBURGER ICON >--------------- */}
-                <Box sx={{ flexGrow: 1 }}>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        aria-label="menu"
-                        aria-controls="menu-appbar"
-                        onClick={handleOpenMenu}
-                        sx={{ mr: 2, color: "#ace23a" }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Menu
-                        sx={{ mt: '45px' }}
-                        id="menu-appbar"
-                        anchorEl={anchorElMenu}
-                        anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right', // <---- Where the drop down
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right', // <---- Where the drop down
-                        }}
-                        open={Boolean(anchorElMenu)}
-                        onClose={handleCloseMenu}
-                    >
-                        <MenuItem onClick={handleCloseMenu}>
-                            <Typography textAlign="center" onClick={handleProfile}>Profile</Typography>
-                        </MenuItem>
-                        <MenuItem onClick={handleCloseMenu}>
-                            <Typography textAlign="center" onClick={handleSteps}>Steps</Typography>
-                        </MenuItem>
-                        <MenuItem onClick={handleCloseMenu}>
-                            <Typography textAlign="center" onClick={handleMap}>Map</Typography>
-                        </MenuItem>
-                        <MenuItem onClick={handleCloseMenu}>
-                            <Typography textAlign="center" onClick={handleAbout}>About</Typography>
-                        </MenuItem>
-                        <MenuItem onClick={handleCloseMenu}>
-                            <Typography textAlign="center" onClick={handleSignOut}>Sign Out</Typography>
-                        </MenuItem>
-                    </Menu>
-                </Box>
-                {/* ------< LOGO ICON >--------------- */}
-                <Box sx={{ flexGrow: 1 }}>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        aria-label="logo"
-                        aria-controls="logo-appbar"
-                        onClick={handleHome}
-                        sx={{ mr: 2 }}
-                    >
-                        <Avatar alt="billwLogo" src={billwLogo} variant="square" />
-                    </IconButton>
-                </Box>
-                {/* ------< USER ICON >--------------- */}
-                <Box sx={{ flexGrow: 0 }}>
-                    <IconButton
-                        onClick={handleProfile}
-                        sx={{ p: 0 }}
-                    >
-                        {
-                            (function () {
-                                if (user.profile_image) {
-                                    return <Avatar src={user.profile_image} sx={{ border: 2,}} />
-                                } else {
-                                    return <div>
-                                        {(getInitials(first_name, last_name)) && <Avatar sx={{}}>{initials}</Avatar>}
-                                    </div>
-                                }
-                            })()
-                        }
-                    </IconButton>
-                </Box>
-            </AppBar>
-            <div className="nav">
-
-                {/* <ON LOGIN / REGISTER VIEW - WHEN CLICKED BRINGS USER TO LANDING PAGE> */}
-                <Link className="navTitle" to="/home">
-                    Hey Bill W.
-                </Link>
-                {/* ---------------------------------------------------------- */}
-
+            {/* <div className="nav"> */}
                 <div>
 
                     {/* If no user is logged in, show these links */}
@@ -184,36 +97,11 @@ function Nav() {
 
                     {/* If a user is logged in, show these links */}
                     {user.id && (
-                        <>
-                            {/* <WELCOME VIEW> */}
-                            <Link className="navLink" to="/welcome">
-                                Home
-                            </Link>
-
-                            {/* <THIS WILL BE THE INTERACTIVE 12 STEP PROGRAM> */}
-                            {/* <USED TO BE THE LINK FOR INFO> */}
-                            <Link className="navLink" to="/steps">
-                                12 Steps
-                            </Link>
-
-                            {/* <THIS WILL BE THE MAP> */}
-                            <Link className="navLink" to="/map">
-                                Map
-                            </Link>
-
-                            {/* <USER PAGE & LOG OUT BUTTON COMPONENTS> */}
-                            {/* <Link className="navLink" to="/user">Profile</Link> */}
-
-                        </>
+                        <UserNav />
                     )}
-                    {/* <THIS WILL BE THE ABOUT PAGE COMPONENT> */}
-                    <Link className="navLink" to="/about">
-                        About
-                    </Link>
-
                 </div>
 
-            </div>
+            {/* </div> */}
         </>
     );
 }
