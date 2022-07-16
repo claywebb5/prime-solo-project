@@ -36,6 +36,24 @@ function Nav() {
     const handleCloseMenu = () => {
         setAnchorElMenu(null);
     };
+    // -------< PROFILE ICON >---------------
+    const { first_name, last_name } = user;
+    let initials = '';
+
+    const getInitials = (firstName, lastName) => {
+        let firstLetter = 'J';
+        let secondLetter = '';
+
+        if (firstName && lastName) {
+            firstLetter = (firstName[0]).toUpperCase();
+            secondLetter = (lastName[0]).toUpperCase();
+        } else if (firstName) {
+            firstLetter = (firstName[0]).toUpperCase();
+            secondLetter = (firstName[1]);
+        }
+        initials = firstLetter + secondLetter;
+        return true;
+    }
     // GO Home
     const handleHome = () => {
         history.push("/welcome")
@@ -65,11 +83,11 @@ function Nav() {
 
     return (
         <>
-            <AppBar position="fixed" sx={{ marginBottom: 1, flexDirection: 'row'  }}>
-            {/* <AppBar sx={{ marginBottom: 1 }}> */}
+            <AppBar position="fixed" sx={{ marginBottom: 1, flexDirection: 'row' }}>
+                {/* <AppBar sx={{ marginBottom: 1 }}> */}
 
                 {/* ------< HAMBURGER ICON >--------------- */}
-                <Box sx={{ flexGrow: 1}}>
+                <Box sx={{ flexGrow: 1 }}>
                     <IconButton
                         size="large"
                         edge="start"
@@ -124,6 +142,25 @@ function Nav() {
                         sx={{ mr: 2 }}
                     >
                         <Avatar alt="billwLogo" src={billwLogo} variant="square" />
+                    </IconButton>
+                </Box>
+                {/* ------< USER ICON >--------------- */}
+                <Box sx={{ flexGrow: 0 }}>
+                    <IconButton
+                        onClick={handleProfile}
+                        sx={{ p: 0 }}
+                    >
+                        {
+                            (function () {
+                                if (user.profile_image) {
+                                    return <Avatar src={user.profile_image} sx={{ border: 2,}} />
+                                } else {
+                                    return <div>
+                                        {(getInitials(first_name, last_name)) && <Avatar sx={{}}>{initials}</Avatar>}
+                                    </div>
+                                }
+                            })()
+                        }
                     </IconButton>
                 </Box>
             </AppBar>

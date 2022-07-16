@@ -54,3 +54,22 @@ CREATE TABLE "location" (
 -- Test Data
 INSERT INTO "" ("", "")
 VALUES ('', );
+
+--<ADD COLUMN TO USER TABLE>-------------------------------------------------------------------------------------------- 
+ALTER TABLE "user"
+ADD COLUMN "first_name" VARCHAR (50),
+ADD COLUMN "last_name" VARCHAR (50), 
+ADD COLUMN "email" VARCHAR (100),
+ADD COLUMN "phone_number" VARCHAR (100),
+ADD COLUMN "street" VARCHAR (100),
+ADD COLUMN "city" VARCHAR (100),
+ADD COLUMN "state" VARCHAR (100),
+ADD COLUMN "zip" VARCHAR (100),
+ADD COLUMN "dob" VARCHAR (100),
+ADD COLUMN "profile_image" VARCHAR (100),
+ADD COLUMN "friends" INTEGER DEFAULT 0,
+ADD COLUMN "access_level" INTEGER DEFAULT 1;
+--   -------------------------------------------------------------------------------------------- 
+--   -------------------------------------------------------------------------------------------- 
+--   -------------------------------------------------------------------------------------------- 
+--   -------------------------------------------------------------------------------------------- 
