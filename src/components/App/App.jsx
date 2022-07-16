@@ -124,7 +124,7 @@ function App() {
             exact
             path="/map"
           >
-            <MapView />
+            {/* <MapView /> */}
           </ProtectedRoute>
 
           {/* ========<PROFILE>=================== */}

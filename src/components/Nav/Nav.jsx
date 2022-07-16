@@ -51,6 +51,10 @@ function Nav() {
   const handleAbout = () => {
     history.push("/about")
   };
+  // GO to Profile
+  const handleProfile = () => {
+    history.push("/user")
+  };
   
 
   return (

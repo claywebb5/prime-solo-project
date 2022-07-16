@@ -223,4 +223,4 @@ class MapView extends Component {
     } // ===========<END RENDER>================================================
 } // =======================<END CLASS COMPONENT>================================================
 
-export default MapView;
+// export default MapView;
